@@ -1,0 +1,90 @@
+<app-topbar>
+  <div class="container m-auto bg-white p-3">
+    <div class="shadow-2 border-round-sm p-3">
+      <div class="grid">
+        <div class="col-5">
+          <img [src]="concert.concert.img_url" alt="" height="380" width="350">
+        </div>
+        <div class="col-7 flex flex-column justify-content-between">
+          <div>
+            <div class="text-xl font-bold mb-2">{{ concert.concert.name }}</div>
+            <div class="mb-3">{{ concert.concert.details }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shadow-2 border-round-sm p-3 mt-5">
+      <div class="grid">
+        <div class="col-5">
+          Ticket Price :
+        </div>
+        <div class="col-7">
+          <p-dropdown [(ngModel)]="selectedTicket" [appendTo]="'body'" [options]="listPrice" optionLabel="label">
+          </p-dropdown>
+        </div>
+      </div>
+
+      <div [formGroup]="formData">
+        <div class="grid">
+          <div class="col-5">
+            Ticket Amount :
+          </div>
+          <div class="col-7">
+            <input type="text" class="w-full" pInputText formControlName="amount">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="grid">
+        <div class="col-5">
+          Promotion
+        </div>
+        <div class="col-7">
+          <p-dropdown [appendTo]="'body'">
+          </p-dropdown>
+        </div>
+      </div>
+      <p-divider></p-divider>
+      <div class="grid mb-1">
+        <div class="col-5">
+          SubTotal
+        </div>
+        <div class="col-7 flex justify-content-end">
+          {{ subtotal}} THB
+        </div>
+      </div>
+      <div class="grid">
+        <div class="col-5">
+          Promotion
+        </div>
+        <div class="col-7 flex justify-content-end">
+          {{ promotion }} THB
+        </div>
+      </div>
+      <p-divider></p-divider>
+      <div class="grid">
+        <div class="col-5 font-bold">
+          Total
+        </div>
+        <div class="col-7 flex justify-content-end font-bold">
+          {{ total }} THB
+        </div>
+      </div>
+      <p-divider></p-divider>
+      <div class="grid">
+        <div class="col-5">
+          Payment Method
+        </div>
+        <div class="col-7">
+          Visa ending in **23(Change)
+        </div>
+      </div>
+      <p-divider></p-divider>
+      <div>
+        <button pButton label="Buy Ticket" class="w-full" (click)="test()"></button>
+      </div>
+    </div>
+  </div>
+</app-topbar>
