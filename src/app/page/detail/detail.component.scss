@@ -1,0 +1,8 @@
+.container {
+    width: 1000px;
+    height: 100%;
+}
+
+:host ::ng-deep .p-dropdown {
+    width: 100%;
+}
