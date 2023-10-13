@@ -1,0 +1,73 @@
+<div class="wrapper flex justify-content-center align-items-center">
+    <div class="shadow-2 border-round-sm p-3 w-30rem bg-white">
+        <div class="text-center text-xl mb-2">Sign Up</div>
+        <div [formGroup]="formData">
+            <div class="grid">
+                <div class="col-12 -mb-2">
+                    First Name
+                </div>
+                <div class="col-12">
+                    <input class="w-full" placeholder="First Name" type="text" pInputText formControlName="first_name">
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-12 -mb-2">
+                    Last Name
+                </div>
+                <div class="col-12">
+                    <input class="w-full" placeholder="Last Name" type="text" pInputText formControlName="last_name">
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-12 -mb-2">
+                    Email
+                </div>
+                <div class="col-12">
+                    <input class="w-full" placeholder="Email" type="text" pInputText formControlName="email">
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-12 -mb-2">
+                    Phone Number
+                </div>
+                <div class="col-12">
+                    <input class="w-full" placeholder="Phone Number" type="text" pInputText formControlName="tel">
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-12 -mb-2">
+                    Username
+                </div>
+                <div class="col-12">
+                    <input class="w-full" placeholder="Username" type="text" pInputText formControlName="username">
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-12 -mb-2">
+                    Password
+                </div>
+                <div class="col-12">
+                    <input class="w-full" placeholder="Password" type="text" pInputText formControlName="password">
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-12 -mb-2">
+                    Role
+                </div>
+                <div class="col-12">
+                    <input class="w-full" placeholder="Role" type="text" pInputText formControlName="role">
+                </div>
+            </div>
+        </div>
+        <p-divider></p-divider>
+        <div>
+            <button class="w-full" label="Sign In" pButton (click)="submit()"></button>
+        </div>
+    </div>
+</div>
