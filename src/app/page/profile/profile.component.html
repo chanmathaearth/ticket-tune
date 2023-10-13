@@ -1,0 +1,83 @@
+<app-topbar>
+  <div class="container m-auto bg-white p-3">
+    <p-tabView>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="pi pi-user mr-2"></i>
+          <span>Profile</span>
+        </ng-template>
+        <div class="shadow-2 border-round-sm p-3">
+          <div class="font-bold">User Detail</div>
+          <div class="flex justify-content-center my-3">
+            <p-avatar icon="pi pi-user pis" shape="circle" [style]="{ 'width': '10rem','height': '10rem' }"></p-avatar>
+          </div>
+          <div [formGroup]="formData">
+            <div class="grid mb-2">
+              <div class="col-12">First Name</div>
+              <div class="col-12 -mt-2">
+                <input class="w-full" placeholder="Name" type="text" pInputText formControlName="first_name">
+              </div>
+            </div>
+            <div class="grid mb-2">
+              <div class="col-12">Last Name</div>
+              <div class="col-12 -mt-2">
+                <input class="w-full" placeholder="SurName" type="text" pInputText formControlName="last_name">
+              </div>
+            </div>
+            <div class="grid mb-2">
+              <div class="col-12">Email</div>
+              <div class="col-12 -mt-2">
+                <input class="w-full" placeholder="Email" type="text" pInputText formControlName="email">
+              </div>
+            </div>
+            <div class="grid mb-2">
+              <div class="col-12">Phone Number</div>
+              <div class="col-12 -mt-2">
+                <input class="w-full" placeholder="Phone Number" type="text" pInputText formControlName="tel">
+              </div>
+            </div>
+            <div class="grid">
+              <div class="col-12">Password</div>
+              <div class="col-12 -mt-2">
+                <input class="w-full" placeholder="Password" type="text" pInputText formControlName="password">
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <p-divider></p-divider>
+            <button class="p-button-success w-full" label="Save Profile" pButton pRipple></button>
+          </div>
+        </div>
+
+      </p-tabPanel>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="pi pi-ticket mr-2"></i>
+          <span>Ticket</span>
+        </ng-template>
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+          totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+          dicta sunt explicabo. Nemo enim
+          ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+          dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam
+          eius modi.
+        </p>
+      </p-tabPanel>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="pi pi-dollar mr-2"></i>
+          <span>Payment</span>
+        </ng-template>
+        <p>
+          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+          deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+          provident, similique sunt in culpa
+          qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
+          est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+          impedit quo minus.
+        </p>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</app-topbar>
