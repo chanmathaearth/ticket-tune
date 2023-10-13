@@ -1,0 +1,33 @@
+<div class="wrapper flex justify-content-center align-items-center">
+    <div class="shadow-2 border-round-sm p-3 w-30rem bg-white">
+        <div class="text-center text-xl mb-2">Sign In</div>
+        <div class="text-sm text-gray-600 mb-3">For security, please sign in to access your information</div>
+        <div [formGroup]="formData">
+            <div class="grid">
+                <div class="col-12 -mb-2">
+                    Username
+                </div>
+                <div class="col-12">
+                    <input class="w-full" placeholder="" type="text" pInputText formControlName="username">
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-12 -mb-2">
+                    Password
+                </div>
+                <div class="col-12">
+                    <input class="w-full" placeholder="Password" type="text" pInputText formControlName="password">
+                </div>
+            </div>
+        </div>
+        <p-divider></p-divider>
+        <div>
+            <button class="w-full" label="Sign In" pButton (click)="login()"></button>
+        </div>
+        <div>
+            <button routerLink="/signup" class="w-full p-button-text p-button-secondary mt-2" label="Sign Up"
+                pButton></button>
+        </div>
+    </div>
+</div>
