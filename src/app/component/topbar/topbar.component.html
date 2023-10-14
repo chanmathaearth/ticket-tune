@@ -1,16 +1,27 @@
 <div class="topbar">
-  <div class="container">
-    <div>
-      <a href="/" class="text-white mr-3">Home</a>
-      <a href="/booking" class="text-white">My Booking</a>
-    </div>
-    <div>
-      <span routerLink="/payment" class="pi pi-shopping-cart text-white mr-4" style="font-size: 1.5rem;"></span>
-      <span routerLink="/profile" class="pi pi-user text-white" style="font-size: 1.5rem;"></span>
-    </div>
+  <div class="flex justify-content-between">
+      <!-- logo -->
+      <div class="pt-5 pl-3">
+        <a href="/">
+          <img class="h-2rem pb-1" src="./assets/logo.png">
+        </a>
+      </div>
+      <!-- signin -->
+      <div class="flex flex-row flex-wrap">
+        <div class="bookingbt pt-4 pr-2">
+          <a href="/booking">
+            <p-button icon="pi pi-shopping-cart" [rounded]="true" [text]="true" severity="secondary "></p-button>
+          </a>
+        </div>
+
+        <div class="profilebt pt-4 pr-5">
+          <a href="/signin">
+            <p-button icon="pi pi-user" [rounded]="true" [text]="true" severity="secondary " ></p-button>
+          </a>
+        </div>
+      </div>
   </div>
+  <ng-content></ng-content>
 </div>
-<div class="content bg-gray-300">
-  <ng-content>
-  </ng-content>
-</div>
+
+
