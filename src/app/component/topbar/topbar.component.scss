@@ -1,11 +1,7 @@
 .topbar {
-    height: 70px;
-    width: 100vw;
-    background-color: #27374D;
-    position: fixed;
-    z-index: 99;
-}
-
+    width: 100%;
+    max-height: 60px; /* ตั้งค่าความสูงสูงสุดของ topbar */
+  }
 .container {
     height: 100%;
     padding: 0 10rem;
@@ -32,6 +28,23 @@ span:hover {
     position: absolute;
     left: 0;
     top: 70px;
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 20px);
     width: 100vw;
 }
+
+.logo { 
+
+    width: 200px;
+    height: 75px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.bookingbt{
+    font-size: 2.5rem;
+}
+
+.bookingbt .p-button .p-icon {
+    font-size: 50px;
+  }
