@@ -25,11 +25,11 @@ import { DetailComponent } from './page/detail/detail.component';
     SignupComponent,
     ProfileComponent,
     PaymentComponent,
-    TopbarComponent,
     SidebarComponent,
     DetailComponent
   ],
   imports: [
+    TopbarComponent,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
