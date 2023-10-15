@@ -1,1 +1,42 @@
-<app-topbar></app-topbar>
+<app-topbar>
+    <div class="booking-container">
+      <div class="concert-info">
+        <img src="concert-image.jpg" alt="Concert Image">
+        <h2>Concert Title</h2>
+        <p>Concert Description goes here...</p>
+      </div>
+  
+      <div class="ticket-info">
+        <table>
+          <thead>
+            <tr>
+              <th>Ticket Type</th>
+              <th>Price</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ZONE A</td>
+              <td>4900 THB</td>
+              <td>On Sale</td>
+            </tr>
+            <tr>
+                <td>ZONE B</td>
+                <td>3900 THB</td>
+                <td>On Sale</td>
+            </tr>
+            <tr>
+                <td>ZONE C</td>
+                <td>2900 THB</td>
+                <td>On Sale</td>
+            </tr>
+            <!-- More ticket rows... -->
+          </tbody>
+        </table>
+        <p>Quantity : {{ selectedSeats }}</p>
+        <button (click)="buyTickets()">Buy Tickets</button>
+      </div>
+    </div>
+  </app-topbar>
+  

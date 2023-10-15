@@ -15,6 +15,7 @@ import { PaymentComponent } from './page/payment/payment.component';
 import { TopbarComponent } from './component/topbar/topbar.component';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { DetailComponent } from './page/detail/detail.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { DetailComponent } from './page/detail/detail.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    PrimeNGModule
+    PrimeNGModule,
   ],
   providers: [
     MessageService,
