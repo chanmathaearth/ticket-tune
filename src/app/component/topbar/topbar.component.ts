@@ -13,5 +13,3 @@ import { PrimeNGModule } from 'src/app/modules/primeng.module';
 
 export class TopbarComponent {}
 export class ButtonTextDemo {}
-
-// ngOnInit(): void {  }
