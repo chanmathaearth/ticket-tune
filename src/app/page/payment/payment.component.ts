@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 export interface Card {
     cardNumber: string;
     expiryDate: string;
-    cvv: number;
+    cvv: string;
     cardName: string;
 }
 
@@ -14,26 +14,23 @@ export interface Card {
 })
 export class PaymentComponent {
     selectedMethod = 'credit';
-    addedCards: any[] = [];
+    addedCards: Card[] = [];
     showDialog: boolean = false;
 
     selectPaymentMethod(method: string) {
         this.selectedMethod = method;
     }
 
-    
     addCard(cardNumber: string, expiry: string, cvc: string, cardOwner: string) {
-      const card = {
-          cardNumber: cardNumber,
+      const card: Card = {
+          cardNumber,
           expiryDate: expiry,
           cvv: cvc,
           cardName: cardOwner
       };
-  
       this.addedCards.push(card);
       this.showDialog = false;
-  }
-  
+    }
 
     onMonthYearChange(event: any): void {
         let value = event.target.value.replace(/\D/g, '');
@@ -46,18 +43,16 @@ export class PaymentComponent {
     formatInput(event: any) {
         let value = event.target.value.replace(/ /g, ''); 
         let newValue = '';
-
         for (let i = 0; i < value.length; i++) {
             if (i > 0 && i % 4 === 0) {
                 newValue += ' ';
             }
             newValue += value[i];
         }
-
         event.target.value = newValue;
     }
+
     removeCard(index: number) {
-      this.addedCards.splice(index, 1);
-  }  
-  
+        this.addedCards.splice(index, 1);
+    }  
 }
