@@ -1,55 +1,69 @@
 /* booking.component.scss */
 .booking-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .concert-info {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .ticket-info {
-    flex: 2;
-    padding: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #000000;
-    color: #fff; /* กำหนดสีข้อความเป็นสีขาว */
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  th {
-    background-color: #000000;
-    font-weight: bold;
-    color: #ffffff;
-    padding: 15px;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 6px;
-    transition: background-color 0.3s;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-    color: #fff;
-  }
-  
-  .seat-selection {
-    flex: 2;
-    padding: 20px;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+}
+
+.concert-info {
+  flex: 1;
+  padding: 20px;
+}
+
+.ticket-info {
+  flex: 2;
+  padding: 20px;
+}
+
+/* booking.component.scss */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #000000;
+  color: #fff;
+  font-size: 16px; /* Set a fixed font size to prevent text resizing with zoom */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+th {
+  background-color: #000000;
+  font-weight: bold;
+  color: #fff;
+  padding: 15px;
+}
+
+th:nth-child(1) {
+  width: 30%; /* Set a fixed width for the first column */
+}
+
+th:nth-child(2) {
+  width: 30%; /* Set a fixed width for the second column */
+}
+
+th:nth-child(3) {
+  width: 40%; /* Set a fixed width for the third column */
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+.seat-selection {
+  flex: 2;
+  padding: 20px;
+}
