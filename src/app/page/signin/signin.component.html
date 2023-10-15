@@ -1,10 +1,13 @@
-<div class="wrapper flex justify-content-center align-items-center">
-    <div class="shadow-2 border-round-sm p-3 w-30rem bg-white">
-        <div class="text-center text-xl mb-2">Sign In</div>
-        <div class="text-sm text-gray-600 mb-3">For security, please sign in to access your information</div>
+<div class="wrapper" style="position: relative;">
+    <video autoplay muted loop playsinline preload="auto" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+        <source src="./assets/bg.mp4" type="video/mp4">
+    </video>
+    <div class="shadow-2 border-round-sm p-3 w-30rem" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); backdrop-filter: blur(10px);">
+        <div class="text-center text-xl mb-2 text-white">Sign In</div>
+        <div class="text-sm text-gray-600 mb-3 text-white">For security, please sign in to access your information</div>
         <div [formGroup]="formData">
             <div class="grid">
-                <div class="col-12 -mb-2">
+                <div class="col-12 -mb-2 text-white">
                     Username
                 </div>
                 <div class="col-12">
@@ -13,7 +16,7 @@
             </div>
 
             <div class="grid">
-                <div class="col-12 -mb-2">
+                <div class="col-12 -mb-2 text-white">
                     Password
                 </div>
                 <div class="col-12">
@@ -23,11 +26,10 @@
         </div>
         <p-divider></p-divider>
         <div>
-            <button class="w-full" label="Sign In" pButton (click)="login()"></button>
+            <button class="w-full text-white" label="Sign In" pButton (click)="login()" style="background-color: black;"></button>
         </div>
         <div>
-            <button routerLink="/signup" class="w-full p-button-text p-button-secondary mt-2" label="Sign Up"
-                pButton></button>
+            <button routerLink="/signup" class="w-full p-button-text p-button-secondary mt-2 text-white" label="Sign Up" pButton></button>
         </div>
     </div>
 </div>
