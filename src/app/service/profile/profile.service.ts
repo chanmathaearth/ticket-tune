@@ -13,4 +13,5 @@ export class ProfileService {
   getProfile(id : string) {
     return this.http.get('http://localhost:3002/api/profile?' + id);
   }
+  
 }
