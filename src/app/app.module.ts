@@ -15,6 +15,9 @@ import { PaymentComponent } from './page/payment/payment.component';
 import { TopbarComponent } from './component/topbar/topbar.component';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { DetailComponent } from './page/detail/detail.component';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import { DetailComponent } from './page/detail/detail.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    PrimeNGModule
+    PrimeNGModule,
+    ButtonModule,
+    DialogModule,
   ],
   providers: [
     MessageService,
@@ -43,4 +48,4 @@ import { DetailComponent } from './page/detail/detail.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
