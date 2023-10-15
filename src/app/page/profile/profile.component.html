@@ -8,9 +8,20 @@
             <span>Profile</span>
           </ng-template>
           <div class="shadow-2 border-round-sm p-3">
-            <div class="font-bold">User Detail</div>
+            <div class="font-bold">Basic Information</div>
             <div class="flex justify-content-center my-3">
-              <p-avatar icon="pi pi-user pis" shape="circle" [style]="{ 'width': '10rem','height': '10rem' }"></p-avatar>
+              <div class="profile-picture-container">
+                <p-avatar
+                  [style]="{ 'cursor': 'pointer', 'width': '9rem', 'height': '9rem' }"
+                  shape="circle"
+                  size="large"
+                  (click)="changeProfilePicture()"
+                >
+                  <i class="pi pi-user"></i>
+                </p-avatar>
+                <input type="file" accept="image/*" (change)="onFileSelected($event)" #fileInput style="display: none;">
+              </div>
+              
             </div>
             <div [formGroup]="formData">
               <div class="grid mb-2">
@@ -47,25 +58,26 @@
             <div class="">
               <p-divider></p-divider>
               <button class="p-button p-button-primary w-full" label="Save" pButton pRipple></button>
-            </div>
+            </div>         
           </div>
         </p-tabPanel>
         <p-tabPanel>
           <ng-template pTemplate="header">
             <i class="pi pi-ticket mr-2"></i>
-            <span>Ticket</span>
+            <span [routerLink]="['/booking']">Booking</span>
           </ng-template>
           <p>
-            Sed ut perspiciatis 
+            You can click "Booking" to show details :)
           </p>
         </p-tabPanel>
+        
         <p-tabPanel>
           <ng-template pTemplate="header">
             <i class="pi pi-dollar mr-2"></i>
-            <span>Payment</span>
+            <div class="payment-tab" (click)="navigateToPayment()">Payment</div>
           </ng-template>
           <p>
-            At vero
+            You can click "Payment" to show details :)
           </p>
         </p-tabPanel>
       </p-tabView>
