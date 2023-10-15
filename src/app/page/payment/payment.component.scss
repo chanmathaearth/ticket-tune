@@ -1,0 +1,103 @@
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+}
+
+.allpaymentcontainer {
+    display: flex;
+    width: 70%;
+    height: 80%;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  
+    .payment-container {
+        display: flex;
+        width: 100%;
+      
+        .sidebar-payment {
+            margin-bottom: 10%;
+            width: 18%;
+
+            button {
+                display: block;
+                width: 100%;
+                padding: 12px;
+                border: none;
+                background-color: #f7f7f7;
+                cursor: pointer;
+                transition: background-color 0.3s;
+    
+                &:hover {
+                    background-color: #eaeaea;
+                }
+    
+                &.selected {
+                    background-color: #ddd;
+                }
+            }
+        }
+
+        .container-content {
+            padding: 10px;
+            background-color: #ddd;
+            flex: 1;
+            position:relative;
+
+            .block {
+                margin-bottom: 10px;
+                margin-right: 10px;
+                padding: 10px;
+
+                p {
+                    margin: 10px 0;
+                }
+
+                input[type="text"] {
+                    width: 55%;
+                    padding: 7px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                }
+
+                .inline-fields {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 10px;
+
+                    .field-item {
+                        flex: 1;
+
+                        &:not(:last-child) {
+                            margin-right: 10px;
+                        }
+
+                        p {
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.add-card {
+    cursor: pointer;
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+.addcardtext {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.deletebtn {
+    cursor: pointer;
+}

@@ -1,24 +1,37 @@
 <div class="topbar">
   <div class="flex justify-content-between">
       <!-- logo -->
-      <div class="pt-5 pl-3">
+      <div class="pt-3 pl-5">
         <a href="/">
           <img class="h-2rem pb-1" src="./assets/logo.png">
         </a>
       </div>
       <!-- signin -->
       <div class="flex flex-row flex-wrap">
-        <div class="bookingbt pt-4 pr-2">
+        <div class="bookingbt pt-2 pr-2">
           <a href="/booking">
             <p-button icon="pi pi-shopping-cart" [rounded]="true" [text]="true" severity="secondary "></p-button>
           </a>
         </div>
+        <div class="profilebt pt-2 pr-2">
+          <a [routerLink]="['/promogen']">
+            <p-button icon="pi pi-ticket" [rounded]="true" [text]="true" severity="secondary "></p-button>
+          </a>
+        </div>
+        
+        <div class="profilebt pt-2 pr-2">
+          <a [routerLink]="['/payment']">
+            <p-button icon="pi pi-wallet" [rounded]="true" [text]="true" severity="secondary "></p-button>
+          </a>
+        </div>
+        
 
-        <div class="profilebt pt-4 pr-5">
+        <div class="profilebt pt-2 pr-5">
           <a href="/signin">
             <p-button icon="pi pi-user" [rounded]="true" [text]="true" severity="secondary " ></p-button>
           </a>
         </div>
+        
       </div>
   </div>
   <ng-content></ng-content>

@@ -7,6 +7,7 @@ import { ProfileComponent } from './page/profile/profile.component';
 import { SigninComponent } from './page/signin/signin.component';
 import { SignupComponent } from './page/signup/signup.component';
 import { DetailComponent } from './page/detail/detail.component';
+import { PromogenComponent } from './page/promogen/promogen.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
+  },
+  { 
+    path: 'promogen', 
+    component: PromogenComponent
   },
 ];
 
