@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ProfileService } from 'src/app/service/profile/profile.service';
+
+
+// import { ProfileService } from 'src/app/service/profile/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -19,18 +21,18 @@ export class ProfileComponent {
     password: new FormControl(''),
   });
 
-  constructor(
-    private profileService: ProfileService,
-  ) {
-    let item = JSON.parse(localStorage.getItem('user')!) || [];
-    this.userId = item.user.user_id;
-    this.getProfile()
-  }
+  // constructor(
+  //   private profileService: ProfileService,
+  // ) {
+  //   let item = JSON.parse(localStorage.getItem('user')!) || [];
+  //   this.userId = item.user.user_id;
+  //   this.getProfile()
+  // }
 
 
-  getProfile() {
-    this.profileService.getProfile(this.userId).subscribe(profile => {
-      this.formData.patchValue(profile);
-    });
-  }
+  // getProfile() {
+  //   this.profileService.getProfile(this.userId).subscribe(profile => {
+  //     this.formData.patchValue(profile);
+  //   });
+  // }
 }

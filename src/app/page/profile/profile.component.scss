@@ -1,9 +1,13 @@
 .container {
     width: 1000px;
     height: 100%;
+    background-color: #ffffff; /* Change the background color to white */
+    padding: 20px; /* Increase padding for more spacing */
 }
-
 
 :host ::ng-deep .pis {
     font-size: 5rem;
+    color: #007bff; /* Change the font color to blue */
+    text-transform: uppercase; /* Make the text uppercase */
+    font-weight: bold; /* Make the text bold */
 }
