@@ -18,11 +18,13 @@
                     </div>
 
                     <!-- Pop up ตอนกดเพิ่มบัตร -->
-                    <!-- <p-dialog class="pop-up-addcard" header="Add Card" [(visible)]="showDialog" [modal]="true" [style]="{width: '500px'}" >
+                    <p-dialog class="pop-up-addcard" header="Add Card" [(visible)]="showDialog" [modal]="true" [draggable]="false" [style]="{width: '500px'}" >
                         <div class="card-details-form">
-                            <div class="block font-bold text-center p-4 border-round mb-1">
-                                <p>Card Number</p>
+                            <div class="block font-bold text-center p-4 border-round mb-1 ">
+                                <div class="field-item">
+                                <p >Card Number</p>
                                 <input #cardNumberInput type="text" pInputText maxlength="19" (input)="formatInput($event)" />
+                            </div>
                             </div>
                             <div class="block font-bold text-center p-4 border-round mb-1">
                                 <div class="inline-fields">
@@ -44,7 +46,7 @@
                                 <p-button (onClick)="addCard(cardNumberInput.value, expiryInput.value, cvcInput.value, cardOwnerInput.value)" class="block font-bold text-center p-4 border-round mb-1 save-btn">Save</p-button>
                             </div>
                         </div>
-                    </p-dialog> -->
+                    </p-dialog>
 
                     <!-- ส่วนแสดงหลังกดเพิ่มบัตร -->
                     <div *ngFor="let card of addedCards; let i = index" class="card-details-section">

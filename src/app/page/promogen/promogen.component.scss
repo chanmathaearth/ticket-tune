@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #202124;  // สีพื้นหลังของ outer-container
+    background-color: #202124; 
     padding: 2% 0;
 }
 
@@ -12,11 +12,11 @@
     flex-direction: column;
     justify-content: space-between;
     width: 42%;
-    background-color: #2b2e31;  // สีพื้นหลังของ container หลัก
+    background-color: #2b2e31;  
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     overflow: visible;
-    color: #e0e0e0;  // สีของตัวอักษร
+    color: #e0e0e0;  
 }
 
 .promo-container, .summary-container {
@@ -32,14 +32,14 @@
 .label-text {
     font-weight: 600;
     margin-bottom: 8px;
-    color: #bdbdbd;  // สีของ label
+    color: #bdbdbd;  
 }
 
 .submit-btn, .back-btn {
     align-self: flex-end;
     margin-top: 20px;
-    background-color: #3c4043;  // สีพื้นหลังของปุ่ม
-    color: #e0e0e0;  // สีของตัวอักษรบนปุ่ม
+    background-color: #3c4043;  
+    color: #e0e0e0; 
 }
 
 .inline-flex {
@@ -52,7 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #343638;  // สีพื้นหลังของ calculation container
+    background-color: #343638;  
     padding: 20px;
     margin: 3%;
     border-radius: 8px;
