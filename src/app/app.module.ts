@@ -15,6 +15,7 @@ import { PaymentComponent } from './page/payment/payment.component';
 import { TopbarComponent } from './component/topbar/topbar.component';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { DetailComponent } from './page/detail/detail.component';
+import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { PromogenComponent } from './page/promogen/promogen.component';
 import { PromooverviewComponent } from './page/promooverview/promooverview.component';
@@ -43,7 +44,8 @@ import { PromooverviewComponent } from './page/promooverview/promooverview.compo
     FormsModule,
     ReactiveFormsModule,
     PrimeNGModule,
-    DialogModule
+    ButtonModule,
+    DialogModule,
   ],
   providers: [
     MessageService,
@@ -51,4 +53,4 @@ import { PromooverviewComponent } from './page/promooverview/promooverview.compo
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
