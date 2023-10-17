@@ -50,7 +50,7 @@ export class BookingComponent {
       const formattedSeconds = seconds.toString().padStart(2, '0'); // leading zero
       const formattedTime = `${formattedMinutes}:${formattedSeconds}`;
       timerElement.textContent = `Time Left : ${formattedTime}`;
-      if (this.countdown <= 45) {
+      if (this.countdown <= 50) {
         timerElement.classList.add('red-timer');
       } else {
         timerElement.classList.remove('red-timer');
