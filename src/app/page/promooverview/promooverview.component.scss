@@ -1,0 +1,41 @@
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #202124;  
+}
+
+.allpromocontainer {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    height: 89%;
+    background-color: #2b2e31;  
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    color: #e0e0e0;  
+}
+
+.promo-container {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.tableofpromo {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableofpromo th, .tableofpromo td {
+    border: 1px solid #3c4043;  
+    padding: 10px 20px;
+    background-color: #343638;  
+    color: #bdbdbd;  
+}
+
+.gencode-btn {
+    margin-bottom: 16px;
+    align-self: center;
+    background-color: #3c4043; 
+    color: #e0e0e0;  
+}

@@ -1,0 +1,76 @@
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #202124;  // สีพื้นหลังของ outer-container
+    padding: 2% 0;
+}
+
+.allpromocontainer {
+    display: block;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 42%;
+    background-color: #2b2e31;  // สีพื้นหลังของ container หลัก
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: visible;
+    color: #e0e0e0;  // สีของตัวอักษร
+}
+
+.promo-container, .summary-container {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label-text {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #bdbdbd;  // สีของ label
+}
+
+.submit-btn, .back-btn {
+    align-self: flex-end;
+    margin-top: 20px;
+    background-color: #3c4043;  // สีพื้นหลังของปุ่ม
+    color: #e0e0e0;  // สีของตัวอักษรบนปุ่ม
+}
+
+.inline-flex {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.calculation-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #343638;  // สีพื้นหลังของ calculation container
+    padding: 20px;
+    margin: 3%;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.inline-text {
+    flex: 1;
+    text-align: center;
+    font-weight: 500;
+}
+
+.hidden {
+    display: none;
+}
+
+.gencode-btn {
+    margin: 34%;
+}
+
+

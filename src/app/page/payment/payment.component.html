@@ -2,18 +2,24 @@
     <div class="outer-container">
         <div class="allpaymentcontainer">
             <div class="payment-container">
+                <!-- Sidebar ซ้ายมือ -->
                 <aside class="sidebar-payment">
                     <button class="creditbtn" (click)="selectPaymentMethod('credit')" [class.selected]="selectedMethod === 'credit'">
                         <img src="https://cdn-icons-png.flaticon.com/512/6963/6963703.png" alt="Credit" class="button-image" width="50px" height="50px" />
                     </button>
                 </aside>
+
+                
                 <div class="container-content overflow-auto">
-                    <div *ngIf="selectedMethod === 'credit' && addedCards.length === 0">
+                    <!-- ตอนไม่มีบัตร -->
+                    <div *ngIf="selectedMethod === 'credit' && addedCards.length === 0" class="add-card-section">
                         <img src="https://cdn.icon-icons.com/icons2/3862/PNG/512/card_add_icon_240406.png" width="50px" height="50px" class="add-card" (click)="showDialog = true"/>
                         <p class="addcardtext">Add card here</p>
                     </div>
-                    <p-dialog header="Add Card" [(visible)]="showDialog" [modal]="true" [style]="{width: '500px'}">
-                        <div>
+
+                    <!-- Pop up ตอนกดเพิ่มบัตร -->
+                    <!-- <p-dialog class="pop-up-addcard" header="Add Card" [(visible)]="showDialog" [modal]="true" [style]="{width: '500px'}" >
+                        <div class="card-details-form">
                             <div class="block font-bold text-center p-4 border-round mb-1">
                                 <p>Card Number</p>
                                 <input #cardNumberInput type="text" pInputText maxlength="19" (input)="formatInput($event)" />
@@ -34,22 +40,23 @@
                                 <p>Card Owner</p>
                                 <input #cardOwnerInput type="text" pInputText />
                             </div>
-                            <div>
+                            <div class="save-btn-section">
                                 <p-button (onClick)="addCard(cardNumberInput.value, expiryInput.value, cvcInput.value, cardOwnerInput.value)" class="block font-bold text-center p-4 border-round mb-1 save-btn">Save</p-button>
                             </div>
                         </div>
-                    </p-dialog>
-                    <div *ngFor="let card of addedCards; let i = index">
+                    </p-dialog> -->
+
+                    <!-- ส่วนแสดงหลังกดเพิ่มบัตร -->
+                    <div *ngFor="let card of addedCards; let i = index" class="card-details-section">
                         <h2>Card Details</h2>
                         <p><strong>Card Number:</strong> {{ card.cardNumber }}</p>
                         <p><strong>Card Owner:</strong> {{ card.cardName }}</p>
                         <p><strong>Expiry Date:</strong> {{ card.expiryDate }}</p>
                         <p><strong>CVC:</strong> {{ card.cvv }}</p>
-                        <i class="pi pi-times" (click)="removeCard(i)"></i>
+                        <i class="pi pi-times deletebtn" (click)="removeCard(i)"></i>
                     </div>                
                 </div>
             </div>
         </div>
     </div>
-    </app-topbar>
-    
+</app-topbar>

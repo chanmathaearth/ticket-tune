@@ -1,81 +1,108 @@
+// ส่วนของ SCSS
 .outer-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f2f2f2;
+    background-color: #202124; // สีพื้นหลังสำหรับ theme dark
 }
 
 .allpaymentcontainer {
     display: flex;
-    width: 70%;
-    height: 80%;
-    background-color: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  
+    width: 75%;
+    height: 85%;
+    background-color: #2b2e31; // สีพื้นหลังของ container
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    color: #e0e0e0; // สีข้อความ
+
     .payment-container {
         display: flex;
         width: 100%;
-      
+        border-radius: 10px;
+
         .sidebar-payment {
             margin-bottom: 10%;
             width: 18%;
+            border-right: 1px solid #3c4043; // เพิ่มเส้นขอบเข้มขึ้น
 
             button {
                 display: block;
                 width: 100%;
                 padding: 12px;
                 border: none;
-                background-color: #f7f7f7;
+                background-color: #3c4043;
                 cursor: pointer;
-                transition: background-color 0.3s;
-    
+                transition: background-color 0.3s, transform 0.3s;
+                border-radius: 5px;
+                margin: 10px 0;
+                color: #e0e0e0;
+
                 &:hover {
-                    background-color: #eaeaea;
+                    background-color: #505355;
+                    transform: scale(1.05);
                 }
-    
+
                 &.selected {
-                    background-color: #ddd;
+                    background-color: #505355;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                }
+
+                img.button-image {
+                    filter: brightness(2);
                 }
             }
         }
 
         .container-content {
-            padding: 10px;
-            background-color: #ddd;
+            padding: 20px;
+            background-color: #343638;
             flex: 1;
-            position:relative;
+            position: relative;
+
+            h2 {
+                font-size: 20px;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
 
             .block {
-                margin-bottom: 10px;
-                margin-right: 10px;
-                padding: 10px;
+                margin-bottom: 20px;
+                padding: 15px;
+                background-color: #3c4043;
+                border-radius: 8px;
 
                 p {
                     margin: 10px 0;
                 }
 
                 input[type="text"] {
-                    width: 55%;
-                    padding: 7px;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
+                    width: 100%;
+                    padding: 8px 12px;
+                    border: 1px solid #555;
+                    border-radius: 5px;
+                    margin-top: 5px;
+                    background-color: #2b2e31;
+                    color: #e0e0e0;
                 }
 
                 .inline-fields {
                     display: flex;
                     justify-content: space-between;
-                    margin-top: 10px;
+                    margin-top: 20px;
 
                     .field-item {
                         flex: 1;
 
                         &:not(:last-child) {
-                            margin-right: 10px;
+                            margin-right: 20px;
                         }
 
                         p {
                             margin-bottom: 5px;
+                            font-weight: 600;
+                            color: #bdbdbd;
                         }
                     }
                 }
@@ -84,20 +111,48 @@
     }
 }
 
-.add-card {
+.add-card, .deletebtn {
     cursor: pointer;
-    position: absolute;
-    top: 46%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
 }
-.addcardtext {
+
+.add-card {
     position: absolute;
-    top:50%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.deletebtn {
-    cursor: pointer;
+.addcardtext {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    color: #999;
 }
+
+// เพิ่มสไตล์สำหรับ dialog
+.pop-up-addcard {
+    background-color: #2b2e31; // สีพื้นหลังของ dialog
+    border: 1px solid #3c4043;
+    border-radius: 8px;
+    color: #e0e0e0; // สีข้อความของ dialog
+
+    header {
+        background-color: #343638; // สีพื้นหลังส่วนหัวของ dialog
+        color: #e0e0e0;
+        border-bottom: 1px solid #3c4043;
+    }
+
+    // ปุ่ม save ของ dialog
+    .save-btn {
+        background-color: #505355;
+        color: #e0e0e0;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #3c4043;
+        }
+    }
+}
+

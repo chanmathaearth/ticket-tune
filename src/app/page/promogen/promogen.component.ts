@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./promogen.component.scss']
 })
 export class PromogenComponent {
+  issumary: boolean = false;
+  
+  togglenext() {
+    this.issumary = !this.issumary;
+  }
 
 }
+

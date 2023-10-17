@@ -17,6 +17,7 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { DetailComponent } from './page/detail/detail.component';
 import { DialogModule } from 'primeng/dialog';
 import { PromogenComponent } from './page/promogen/promogen.component';
+import { PromooverviewComponent } from './page/promooverview/promooverview.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { PromogenComponent } from './page/promogen/promogen.component';
     SidebarComponent,
     DetailComponent,
     PromogenComponent,
+    PromooverviewComponent,
 
   ],
   imports: [
