@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
-
 interface SeatData {
   [zone: string]: string[]; // An object with keys (zone names) that map to string arrays (seat numbers)
 }
@@ -135,6 +134,7 @@ export class BookingComponent {
   setButtonWidth(width: string) {
     this.seatButtonWidth = width;
   }
+
 
 
 }

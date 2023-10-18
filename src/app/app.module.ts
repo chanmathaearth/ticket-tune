@@ -17,6 +17,7 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { DetailComponent } from './page/detail/detail.component';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { FieldsetModule } from 'primeng/fieldset';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { DialogModule } from 'primeng/dialog';
     PrimeNGModule,
     ButtonModule,
     DialogModule,
+    FieldsetModule,
   ],
   providers: [
     MessageService,
