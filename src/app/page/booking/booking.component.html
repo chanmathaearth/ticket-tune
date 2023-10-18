@@ -4,8 +4,9 @@
     <h1>Booking</h1>
   </div>
   <div class="booking-container">
+    
     <div class="concert-info">
-      <img class="concert-image" src="assets/background.jpg" alt="Concert Image">
+      <img class="concert-image" src="assets/poster.jpg" alt="Concert Image">
       <h2 class="concert-title">Concert Title</h2>
       <p-fieldset legend="Concert Description" [toggleable]="true" class="custom-fieldset">
         <p>
@@ -14,8 +15,39 @@
         </p>
       </p-fieldset>
     </div>
+    
+
 
     <div class="ticket-info">
+
+      <div class="event-container">
+        <div class="event-date">
+          <span class="day">29</span>
+          <br>
+          <span>
+            <span class="bold">Wed/</span>
+            <span class="icon-clock"></span> <!-- Add a clock icon here -->
+            Nov
+          </span>
+        </div>
+        <div class="event-details">
+          <h3>JAMES ARTHUR SOUTH EAST ASIA TOUR 2023 - BANGKOK</h3>
+          <p-divider></p-divider>
+          <ul>
+            
+              <span>
+                <span class="pi pi-spin pi-clock"></span>   Wed 29 November 2023 • 20:00
+              </span>
+              <p-divider></p-divider>
+              <span>
+                <span class="pi pi-map-marker"></span> Union Hall
+              </span> 
+
+          </ul>
+        </div>
+      </div>
+      
+
       <table>
         <thead>
           <tr>
@@ -59,6 +91,7 @@
           </tr>
         </tbody>
       </table>
+
 
       <div class="quantity-box">
         <p class="label">Quantity : {{ selectedSeats.length }}</p>
