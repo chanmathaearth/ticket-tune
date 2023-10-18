@@ -17,6 +17,8 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { DetailComponent } from './page/detail/detail.component';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { PromogenComponent } from './page/promogen/promogen.component';
+import { PromooverviewComponent } from './page/promooverview/promooverview.component';
 
 
 @NgModule({
@@ -29,7 +31,10 @@ import { DialogModule } from 'primeng/dialog';
     ProfileComponent,
     PaymentComponent,
     SidebarComponent,
-    DetailComponent
+    DetailComponent,
+    PromogenComponent,
+    PromooverviewComponent,
+
   ],
   imports: [
     TopbarComponent,
