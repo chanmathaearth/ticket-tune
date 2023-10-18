@@ -1,7 +1,7 @@
 <app-topbar>
   <div class="booking-container">
     <div class="concert-info">
-      <img src="concert-image.jpg" alt="Concert Image">
+      <img class="concert-image" src="assets/background.jpg" alt="Concert Image">
       <h2>Concert Title</h2>
       <p>Concert Description goes here...</p>
     </div>
@@ -18,7 +18,7 @@
         <tbody>
           <tr>
             <td>ZONE A</td>
-            <td>4900 THB</td>
+            <td>4,900 THB</td>
             <td>On Sale</td>
             <td>
               <button (click)="selectZone('ZONE A')">Select Zone</button>
@@ -26,7 +26,7 @@
           </tr>
           <tr>
             <td>ZONE B</td>
-            <td>3900 THB</td>
+            <td>3,900 THB</td>
             <td>On Sale</td>
             <td>
               <button (click)="selectZone('ZONE B')">Select Zone</button>
@@ -34,32 +34,51 @@
           </tr>
           <tr>
             <td>ZONE C</td>
-            <td>2900 THB</td>
+            <td>2,900 THB</td>
             <td>On Sale</td>
             <td>
               <button (click)="selectZone('ZONE C')">Select Zone</button>
             </td>
           </tr>
+          <tr>
+            <td>ZONE D</td>
+            <td>1,900 THB</td>
+            <td>On Sale</td>
+            <td>
+              <button (click)="selectZone('ZONE D')">Select Zone</button>
+            </td>
+          </tr>
         </tbody>
       </table>
-      <p>Quantity: {{ selectedSeats.length }}</p>
+      <p>Quantity : {{ selectedSeats.length }}</p>
+      <p>Selected Seats: {{ selectedSeats.join(', ') }}</p>
       <button (click)="buyTickets()">Buy Tickets</button>
     </div>
   </div>
   <p-dialog header="Select Seats" [(visible)]="displayDialog" [modal]="true" [resizable]="false" [style]="{ width: '50%' }">
+    <p id="countdown-timer">Time Left : 01:00</p>
     <div class="stage-image">
-      <img src="stage-image.jpg" alt="Stage Image">
+      <img class="popup-image" src="assets/template.jpg" alt="Stage Image">
     </div>
     <div class="seat-selection">
       <h3>Select Your Seats for {{ selectedZone }}</h3>
       <div class="seat-grid">
-        <div *ngFor="let seat of availableSeats">
-          <button [disabled]="isSeatTaken(seat)" (click)="selectSeat(seat)">Seat {{ seat }}</button>
-        </div>
+        <ng-container *ngFor="let seat of availableSeats; let i = index">
+          <button [disabled]="isSeatTaken(seat)"
+                  (click)="selectSeat(seat)"
+                  [style.background-color]="isSeatSelected(seat) ? 'green' : 'blue'"
+                  [style.width]="seatButtonWidth"
+                  class="seat-button">
+            {{ seat }}
+          </button>
+          <br *ngIf="(i + 1) % 10 === 0" /> <!-- A line break after every 10 seats -->
+        </ng-container>
       </div>
-      <p>Selected Seats: {{ selectedSeats.join(', ') }}</p>
+      <div class="button-container">
+        <button class="reset-button" (click)="resetSelection()">Reset</button>
+      </div>
+      <p>Selected Seats : {{ selectedSeats.join(', ') }}</p>
       <button (click)="hideDialog()">Close</button>
-    </div>
+    </div>      
   </p-dialog>
-  
 </app-topbar>

@@ -67,3 +67,77 @@ button:hover {
   flex: 2;
   padding: 20px;
 }
+
+
+.reset-button {
+  background-color: red;
+  color: white;
+  margin-top: 10px;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #ce0000; /* Change to a different shade of red for the hover effect */
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.horizontal-seat-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.horizontal-seat-row button {
+  flex: 0 0 auto;
+  margin: 5px; /* Adjust the margin as needed for spacing */
+  white-space: nowrap;
+  width: 50px; /* Set the width of each button as needed */
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.horizontal-seat-row button[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.horizontal-seat-row button:hover {
+  background-color: #007bff;
+}
+
+
+.seat-button {
+  margin: 3px; /* spacing */
+}
+
+.popup-image {
+  max-width: 100%; /* Limit the image width to its container's width */
+  max-height: 40vh; /* Limit the image height to 80% of the viewport height */
+  display: block; /* Remove any default inline styling */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+/* Add this to your CSS file */
+.concert-image {
+  max-width: 600px; /* Set the maximum width you desire */
+  max-height: 500px; /* Set the maximum height you desire */
+  width: auto; /* Ensure the width adjusts proportionally */
+  height: auto; /* Ensure the height adjusts proportionally */
+}
+
+.red-timer {
+  color: red;
+}
