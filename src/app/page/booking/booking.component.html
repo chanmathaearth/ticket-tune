@@ -1,19 +1,21 @@
 <app-topbar>
-  <p-divider></p-divider>
-  <div class="booking-header">
-    <h1>Booking</h1>
+  <div class="vertical-divider"></div>
+  <div class="horizontal-picture-container">
+    <img src="assets/undertopbar.jpg" alt="Horizontal Picture" class="full-width-image">
   </div>
   <div class="booking-container">
-    
-    <div class="concert-info">
+
+    <div class="concert-info-container">
       <img class="concert-image" src="assets/poster.jpg" alt="Concert Image">
-      <h2 class="concert-title">Concert Title</h2>
-      <p-fieldset legend="Concert Description" [toggleable]="true" class="custom-fieldset">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dddddddddddddddddddddddddddddddddddddddddddddddddolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </p-fieldset>
+      <div class="concert-title-container">
+        <h2 class="concert-title">Concert Title</h2>
+      </div>
+        <p-fieldset legend="Concert Description" [toggleable]="true" class="custom-fieldset">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dddddddddddddddddddddddddddddddddddddddddddddddddolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </p-fieldset>
     </div>
     
 
@@ -25,10 +27,10 @@
           <span class="day">29</span>
           <br>
           <span>
-            <span class="bold">Wed/</span>
-            <span class="icon-clock"></span> <!-- Add a clock icon here -->
-            Nov
+            <span class="bold">Wed/</span>Nov
           </span>
+          <p-divider></p-divider>
+          <span class="pi pi-calendar-times" style="font-size: 2.5rem; color: darkblue"></span>
         </div>
         <div class="event-details">
           <h3>JAMES ARTHUR SOUTH EAST ASIA TOUR 2023 - BANGKOK</h3>
@@ -36,11 +38,11 @@
           <ul>
             
               <span>
-                <span class="pi pi-spin pi-clock"></span>   Wed 29 November 2023 • 20:00
+                <span class="pi pi-spin pi-clock" style="color: green"></span> Wed 29 November 2023 • 20:00
               </span>
               <p-divider></p-divider>
               <span>
-                <span class="pi pi-map-marker"></span> Union Hall
+                <span class="pi pi-map-marker" style="color: red"></span> Union Hall
               </span> 
 
           </ul>
@@ -136,6 +138,6 @@
     </div>      
   </p-dialog>
 </app-topbar>
-<video id="background-video" autoplay loop muted>
+<video autoplay muted loop playsinline preload="auto" id="background-video">
   <source src="./assets/bg.mp4" type="video/mp4">
 </video>
