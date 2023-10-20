@@ -1,1 +1,65 @@
-<p>kut kut kut</p>
+<app-topbar>
+  <div class="booking-container">
+    <div class="concert-info">
+      <img src="concert-image.jpg" alt="Concert Image">
+      <h2>Concert Title</h2>
+      <p>Concert Description goes here...</p>
+    </div>
+
+    <div class="ticket-info">
+      <table>
+        <thead>
+          <tr>
+            <th>Ticket Type</th>
+            <th>Price</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ZONE A</td>
+            <td>4900 THB</td>
+            <td>On Sale</td>
+            <td>
+              <button (click)="selectZone('ZONE A')">Select Zone</button>
+            </td>
+          </tr>
+          <tr>
+            <td>ZONE B</td>
+            <td>3900 THB</td>
+            <td>On Sale</td>
+            <td>
+              <button (click)="selectZone('ZONE B')">Select Zone</button>
+            </td>
+          </tr>
+          <tr>
+            <td>ZONE C</td>
+            <td>2900 THB</td>
+            <td>On Sale</td>
+            <td>
+              <button (click)="selectZone('ZONE C')">Select Zone</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Quantity: {{ selectedSeats.length }}</p>
+      <button (click)="buyTickets()">Buy Tickets</button>
+    </div>
+  </div>
+  <p-dialog header="Select Seats" [(visible)]="displayDialog" [modal]="true" [resizable]="false" [style]="{ width: '50%' }">
+    <div class="stage-image">
+      <img src="stage-image.jpg" alt="Stage Image">
+    </div>
+    <div class="seat-selection">
+      <h3>Select Your Seats for {{ selectedZone }}</h3>
+      <div class="seat-grid">
+        <div *ngFor="let seat of availableSeats">
+          <button [disabled]="isSeatTaken(seat)" (click)="selectSeat(seat)">Seat {{ seat }}</button>
+        </div>
+      </div>
+      <p>Selected Seats: {{ selectedSeats.join(', ') }}</p>
+      <button (click)="hideDialog()">Close</button>
+    </div>
+  </p-dialog>
+  
+</app-topbar>
