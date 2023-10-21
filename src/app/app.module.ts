@@ -17,6 +17,7 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { DetailComponent } from './page/detail/detail.component';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { FieldsetModule } from 'primeng/fieldset';
 import { PromogenComponent } from './page/promogen/promogen.component';
 import { PromooverviewComponent } from './page/promooverview/promooverview.component';
 
@@ -46,6 +47,7 @@ import { PromooverviewComponent } from './page/promooverview/promooverview.compo
     PrimeNGModule,
     ButtonModule,
     DialogModule,
+    FieldsetModule,
   ],
   providers: [
     MessageService,
