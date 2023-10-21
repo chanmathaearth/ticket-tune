@@ -1,12 +1,55 @@
 <app-topbar>
+  <div class="vertical-divider"></div>
+  <div class="horizontal-picture-container">
+    <img src="assets/undertopbar.jpg" alt="Horizontal Picture" class="full-width-image">
+  </div>
   <div class="booking-container">
-    <div class="concert-info">
-      <img class="concert-image" src="assets/background.jpg" alt="Concert Image">
-      <h2>Concert Title</h2>
-      <p>Concert Description goes here...</p>
+
+    <div class="concert-info-container">
+      <img class="concert-image" src="assets/poster.jpg" alt="Concert Image">
+      <div class="concert-title-container">
+        <h2 class="concert-title">Concert Title</h2>
+      </div>
+        <p-fieldset legend="Concert Description" [toggleable]="true" class="custom-fieldset">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dddddddddddddddddddddddddddddddddddddddddddddddddolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </p-fieldset>
     </div>
+    
+
 
     <div class="ticket-info">
+
+      <div class="event-container">
+        <div class="event-date">
+          <span class="day">29</span>
+          <br>
+          <span>
+            <span class="bold">Wed/</span>Nov
+          </span>
+          <p-divider></p-divider>
+          <span class="pi pi-calendar-times" style="font-size: 2.5rem; color: darkblue"></span>
+        </div>
+        <div class="event-details">
+          <h3>JAMES ARTHUR SOUTH EAST ASIA TOUR 2023 - BANGKOK</h3>
+          <p-divider></p-divider>
+          <ul>
+            
+              <span>
+                <span class="pi pi-spin pi-clock" style="color: green"></span> Wed 29 November 2023 • 20:00
+              </span>
+              <p-divider></p-divider>
+              <span>
+                <span class="pi pi-map-marker" style="color: red"></span> Union Hall
+              </span> 
+
+          </ul>
+        </div>
+      </div>
+      
+
       <table>
         <thead>
           <tr>
@@ -50,27 +93,40 @@
           </tr>
         </tbody>
       </table>
-      <p>Quantity : {{ selectedSeats.length }}</p>
-      <p>Selected Seats: {{ selectedSeats.join(', ') }}</p>
-      <button (click)="buyTickets()">Buy Tickets</button>
+
+
+      <div class="quantity-box">
+        <p class="label">Quantity : {{ selectedSeats.length }}</p>
+      </div>
+      
+      <div class="selected-seats-box">
+        <p class="label">Selected Seats : {{ selectedSeats.join(', ') }}</p>
+      </div>
+      
+      <div class="buy-tickets-button-box">
+        <button (click)="buyTickets">Buy Tickets</button>
+      </div>
+
+      
+      
     </div>
   </div>
   <p-dialog header="Select Seats" [(visible)]="displayDialog" [modal]="true" [resizable]="false" [style]="{ width: '50%' }">
     <p id="countdown-timer">Time Left : 01:00</p>
     <div class="stage-image">
-      <img class="popup-image" src="assets/template.jpg" alt="Stage Image">
+      <img class="popup-image" src="assets/Stage.jpg" alt="Stage Image">
     </div>
     <div class="seat-selection">
       <h3>Select Your Seats for {{ selectedZone }}</h3>
       <div class="seat-grid">
         <ng-container *ngFor="let seat of availableSeats; let i = index">
           <button [disabled]="isSeatTaken(seat)"
-                  (click)="selectSeat(seat)"
-                  [style.background-color]="isSeatSelected(seat) ? 'green' : 'blue'"
-                  [style.width]="seatButtonWidth"
-                  class="seat-button">
-            {{ seat }}
+        (click)="selectSeat(seat)"
+        [style.background]="isSeatSelected(seat) ? 'linear-gradient(to right, red, orange)' : 'linear-gradient(to right, gray, darkgray)'"
+        [style.width]="seatButtonWidth"
+        class="seat-button">{{ seat }}
           </button>
+
           <br *ngIf="(i + 1) % 10 === 0" /> <!-- A line break after every 10 seats -->
         </ng-container>
       </div>
@@ -82,3 +138,6 @@
     </div>      
   </p-dialog>
 </app-topbar>
+<video autoplay muted loop playsinline preload="auto" id="background-video">
+  <source src="./assets/bg.mp4" type="video/mp4">
+</video>
