@@ -26,19 +26,9 @@
     position: relative;
 
     
-    border: 1.3px solid #000;
     max-width: 550px;
     top: 30px;
     z-index: 1;
   }
   
-  #background-video {
-    opacity: 0.1;
-    position: absolute;
-    top: 1;
-    left: 0;
-    width: 100%;
-    height: 150%;
-    object-fit: cover;
-    z-index: -999;
-  }
+

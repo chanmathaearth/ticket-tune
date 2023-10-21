@@ -1,89 +1,83 @@
+<app-topbar>
+  <div class="container m-auto shadow-2">
+    <p-tabView>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="pi pi-user mr-2"></i>
+          <span>Profile</span>
+        </ng-template>
+        <div class="shadow-2 p-3">
+          <div class="font-bold">Basic Information</div>
+          <div class="flex justify-content-center my-3">
+            <div class="profile-picture-container">
+              <p-avatar [style]="{ 'cursor': 'pointer', 'width': '9rem', 'height': '9rem' }" shape="circle" size="large"
+                (click)="changeProfilePicture()">
+                <i class="pi pi-user" style="font-size: 3rem;"></i>
+              </p-avatar>
+              <input type="file" accept="image/*" (change)="onFileSelected($event)" #fileInput style="display: none;">
+            </div>
 
-  <app-topbar>
-    <div class="container m-auto bg-white p-3">
-      <p-tabView>
-        <p-tabPanel>
-          <ng-template pTemplate="header">
-            <i class="pi pi-user mr-2"></i>
-            <span>Profile</span>
-          </ng-template>
-          <div class="shadow-2 border-round-sm p-3">
-            <div class="font-bold">Basic Information</div>
-            <div class="flex justify-content-center my-3">
-              <div class="profile-picture-container">
-                <p-avatar
-                  [style]="{ 'cursor': 'pointer', 'width': '9rem', 'height': '9rem' }"
-                  shape="circle"
-                  size="large"
-                  (click)="changeProfilePicture()"
-                >
-                  <i class="pi pi-user" style="font-size: 3rem;"></i>
-                </p-avatar>
-                <input type="file" accept="image/*" (change)="onFileSelected($event)" #fileInput style="display: none;">
-              </div>
-              
-            </div>
-            <div [formGroup]="formData">
-              <div class="grid mb-2">
-                <div class="col-12">First Name</div>
-                <div class="col-12 -mt-2">
-                  <input class="w-full" placeholder="First Name" type="text" pInputText formControlName="first_name">
-                </div>
-              </div>
-              <div class="grid mb-2">
-                <div class="col-12">Last Name</div>
-                <div class="col-12 -mt-2">
-                  <input class="w-full" placeholder="Last Name" type="text" pInputText formControlName="last_name">
-                </div>
-              </div>
-              <div class="grid mb-2">
-                <div class="col-12">Email</div>
-                <div class="col-12 -mt-2">
-                  <input class="w-full" placeholder="Email" type="text" pInputText formControlName="email">
-                </div>
-              </div>
-              <div class="grid mb-2">
-                <div class="col-12">Phone Number</div>
-                <div class="col-12 -mt-2">
-                  <input class="w-full" placeholder="Phone Number" type="text" pInputText formControlName="tel">
-                </div>
-              </div>
-              <div class="grid">
-                <div class="col-12">Password</div>
-                <div class="col-12 -mt-2">
-                  <input class="w-full" placeholder="Password" type="text" pInputText formControlName="password">
-                </div>
-              </div>
-            </div>
-            <div class="">
-              <p-divider></p-divider>
-              <button class="p-button p-button-primary w-full" label="Save" pButton pRipple></button>
-            </div>         
           </div>
-        </p-tabPanel>
-        <p-tabPanel>
-          <ng-template pTemplate="header">
-            <i class="pi pi-ticket mr-2"></i>
-            <span [routerLink]="['/booking']">Booking</span>
-          </ng-template>
-          <p>
-            You can click "Booking" to show details :)
-          </p>
-        </p-tabPanel>
-        
-        <p-tabPanel>
-          <ng-template pTemplate="header">
-            <i class="pi pi-dollar mr-2"></i>
-            <div class="payment-tab" (click)="navigateToPayment()">Payment</div>
-          </ng-template>
-          <p>
-            You can click "Payment" to show details :)
-          </p>
-        </p-tabPanel>
-      </p-tabView>
-    </div>
-  </app-topbar>
-  <video autoplay muted loop playsinline preload="auto"  id="background-video">
-    <source src="./assets/bg.mp4" type="video/mp4">
-  </video>
+          <div [formGroup]="formData">
+            <div class="grid mb-2">
+              <div class="col-12">First Name</div>
+              <div class="col-12 -mt-2">
+                <input class="w-full" placeholder="First Name" type="text" pInputText formControlName="first_name">
+              </div>
+            </div>
+            <div class="grid mb-2">
+              <div class="col-12">Last Name</div>
+              <div class="col-12 -mt-2">
+                <input class="w-full" placeholder="Last Name" type="text" pInputText formControlName="last_name">
+              </div>
+            </div>
+            <div class="grid mb-2">
+              <div class="col-12">Email</div>
+              <div class="col-12 -mt-2">
+                <input class="w-full" placeholder="Email" type="text" pInputText formControlName="email">
+              </div>
+            </div>
+            <div class="grid mb-2">
+              <div class="col-12">Phone Number</div>
+              <div class="col-12 -mt-2">
+                <input class="w-full" placeholder="Phone Number" type="text" pInputText formControlName="tel">
+              </div>
+            </div>
+            <div class="grid">
+              <div class="col-12">Password</div>
+              <div class="col-12 -mt-2">
+                <input class="w-full" placeholder="Password" type="text" pInputText formControlName="password">
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <p-divider></p-divider>
+            <button class="p-button p-button-primary w-full" label="Save" pButton pRipple></button>
+          </div>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="pi pi-ticket mr-2"></i>
+          <span [routerLink]="['/booking']">Booking</span>
+        </ng-template>
+        <p>
+          You can click "Booking" to show details :)
+        </p>
+      </p-tabPanel>
 
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="pi pi-dollar mr-2"></i>
+          <div class="payment-tab" (click)="navigateToPayment()">Payment</div>
+        </ng-template>
+        <p>
+          You can click "Payment" to show details :)
+        </p>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</app-topbar>
+<video autoplay muted loop playsinline preload="auto" id="background-video">
+  <source src="./assets/bg.mp4" type="video/mp4">
+</video>
