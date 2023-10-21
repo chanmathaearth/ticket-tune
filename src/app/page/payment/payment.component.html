@@ -1,2 +1,64 @@
-<p>payment works!</p>
-<h1>Test by Gunt</h1>
+<app-topbar>
+    <div class="outer-container">
+        <div class="allpaymentcontainer">
+            <div class="payment-container">
+                <!-- Sidebar ซ้ายมือ -->
+                <aside class="sidebar-payment">
+                    <button class="creditbtn" (click)="selectPaymentMethod('credit')" [class.selected]="selectedMethod === 'credit'">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6963/6963703.png" alt="Credit" class="button-image" width="50px" height="50px" />
+                    </button>
+                </aside>
+
+                
+                <div class="container-content overflow-auto">
+                    <!-- ตอนไม่มีบัตร -->
+                    <div *ngIf="selectedMethod === 'credit' && addedCards.length === 0" class="add-card-section">
+                        <img src="https://cdn.icon-icons.com/icons2/3862/PNG/512/card_add_icon_240406.png" width="50px" height="50px" class="add-card" (click)="showDialog = true"/>
+                        <p class="addcardtext">Add card here</p>
+                    </div>
+
+                    <!-- Pop up ตอนกดเพิ่มบัตร -->
+                    <p-dialog class="pop-up-addcard" header="Add Card" [(visible)]="showDialog" [modal]="true" [draggable]="false" [style]="{width: '500px', 'background-color': 'red'} "  >
+                        <div class="card-details-form">
+                            <div class="block font-bold text-center p-4 border-round mb-1">
+                                <div class="field-item">
+                                <p >Card Number</p>
+                                <input #cardNumberInput type="text" pInputText maxlength="19" (input)="formatInput($event)" />
+                            </div>
+                            </div>
+                            <div class="block font-bold text-center p-4 border-round mb-1">
+                                <div class="inline-fields">
+                                    <div class="field-item">
+                                        <p>Month / Year</p>
+                                        <input #expiryInput type="text" pInputText (input)="onMonthYearChange($event)" maxlength="5" placeholder="MM/YY" />
+                                    </div>
+                                    <div class="field-item">
+                                        <p>CVC</p>
+                                        <input #cvcInput type="text" pInputText maxlength="3"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block font-bold text-center p-4 border-round mb-1">
+                                <p>Card Owner</p>
+                                <input #cardOwnerInput type="text" pInputText />
+                            </div>
+                            <div class="save-btn-section">
+                                <p-button (onClick)="addCard(cardNumberInput.value, expiryInput.value, cvcInput.value, cardOwnerInput.value)" class="block font-bold text-center p-4 border-round mb-1 save-btn">Save</p-button>
+                            </div>
+                        </div>
+                    </p-dialog>
+
+                    <!-- ส่วนแสดงหลังกดเพิ่มบัตร -->
+                    <div *ngFor="let card of addedCards; let i = index" class="card-details-section">
+                        <h2>Card Details</h2>
+                        <p><strong>Card Number:</strong> {{ card.cardNumber }}</p>
+                        <p><strong>Card Owner:</strong> {{ card.cardName }}</p>
+                        <p><strong>Expiry Date:</strong> {{ card.expiryDate }}</p>
+                        <p><strong>CVC:</strong> {{ card.cvv }}</p>
+                        <i class="pi pi-times deletebtn" (click)="removeCard(i)"></i>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
+</app-topbar>

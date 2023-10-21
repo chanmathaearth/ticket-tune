@@ -1,0 +1,38 @@
+<app-topbar>
+    <div class="outer-container">
+        <div class="allpromocontainer">
+            <div class="promo-container">
+                <p-table class="tableofpromo" [value]="products" [tableStyle]="{'min-width': '60rem'}">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="code" style="width:20%">Promo_ID <p-sortIcon field="code"></p-sortIcon></th>
+                            <th pSortableColumn="name" style="width:20%">Name <p-sortIcon field="name"></p-sortIcon></th>
+                            <th pSortableColumn="start_date" style="width:20%">start_date <p-sortIcon field="start_date"></p-sortIcon></th>
+                            <th pSortableColumn="end_date" style="width:20%">end_date <p-sortIcon field="end_date"></p-sortIcon></th>
+                            <th pSortableColumn="discount_code" style="width:20%">Discount Code <p-sortIcon field="discount_code"></p-sortIcon></th>
+                            <th pSortableColumn="discount_percentage" style="width:20%">Discount Percentage <p-sortIcon field="discount_percentage"></p-sortIcon></th>
+                            <th pSortableColumn="description" style="width:20%">Description <p-sortIcon field="description"></p-sortIcon></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product>
+                        <tr>
+                            <td>{{product.code}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.start_date}}</td>
+                            <td>{{product.end_date}}</td>
+                            <td>{{product.discount_code}}</td>
+                            <td>{{product.discount_percentage}}%</td>
+                            <td>{{product.description}}</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="5">No display data</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+            <p-button class="gencode-btn" label="Generate Promocode" [routerLink]="['/promogen']" ></p-button>
+        </div>
+    </div>
+</app-topbar>
