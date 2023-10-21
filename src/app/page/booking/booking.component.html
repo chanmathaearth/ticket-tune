@@ -1,13 +1,57 @@
 <app-topbar>
+  <div class="background-color" style="background-color: #0e0e0e; max-height: 100;">
+  <div class="horizontal-picture-container">
+    <img src="https://s3-ap-southeast-1.amazonaws.com/tm-img-banner-event/e40b7f905a0111ee911101117567899b.jpg?format=basic&resize=w1440,h450" alt="Horizontal Picture" class="full-width-image">
+  </div>
   <div class="booking-container">
-    <div class="concert-info">
-      <img src="concert-image.jpg" alt="Concert Image">
-      <h2>Concert Title</h2>
-      <p>Concert Description goes here...</p>
-    </div>
 
-    <div class="ticket-info">
-      <table>
+    <div class="concert-info-container">
+      <img class="concert-image box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.06), 0px 7px 9px rgba(0, 0, 0, 0.12), 0px 20px 25px -8px rgba(0, 0, 0, 0.18);" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/e0d3d4305a0111ee911101117567899b.jpg?format=basic&resize=w425,h610" alt="Concert Image">
+      <h3 class="concert-title text-white pl-8">Description</h3>
+      <div class="concert-title">
+        <hr class="title-underline" style="width: 85%; margin-left: 12%;">
+        <p-fieldset legend="Concert Description" [toggleable]="true" class="custom-fieldset">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dddddddddddddddddddddddddddddddddddddddddddddddddolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </p-fieldset>
+      </div>
+    </div>
+    
+
+
+    <div class="ticket-info pr-8">
+
+      <div class="event-container text-white" style="background-color: black">
+        <div class="event-date">
+          <span class="day">29</span>
+          <br>
+          <span>
+            <span class="bold">Wed/</span>Nov
+          </span>
+          <p-divider></p-divider>
+          <span class="pi pi-calendar-times" style="font-size: 2.5rem; color: rgb(255, 255, 255)"></span>
+        </div>
+        <div class="event-details">
+          <h3>JAMES ARTHUR SOUTH EAST ASIA TOUR 2023 - BANGKOK</h3>
+          <p-divider></p-divider>
+          <ul>
+            
+              <span>
+                <span class="pi pi-spin pi-clock" style="color: green"></span> Wed 29 November 2023 • 20:00
+              </span>
+              <p-divider></p-divider>
+              <span>
+                <span class="pi pi-map-marker" style="color: red"></span> Union Hall
+              </span> 
+
+          </ul>
+        </div>
+      </div>
+      
+
+      <table style="margin-top: 30px;" class="styled-table">
         <thead>
           <tr>
             <th>Ticket Type</th>
@@ -18,7 +62,7 @@
         <tbody>
           <tr>
             <td>ZONE A</td>
-            <td>4900 THB</td>
+            <td>4,900 THB</td>
             <td>On Sale</td>
             <td>
               <button (click)="selectZone('ZONE A')">Select Zone</button>
@@ -26,7 +70,7 @@
           </tr>
           <tr>
             <td>ZONE B</td>
-            <td>3900 THB</td>
+            <td>3,900 THB</td>
             <td>On Sale</td>
             <td>
               <button (click)="selectZone('ZONE B')">Select Zone</button>
@@ -34,32 +78,65 @@
           </tr>
           <tr>
             <td>ZONE C</td>
-            <td>2900 THB</td>
+            <td>2,900 THB</td>
             <td>On Sale</td>
             <td>
               <button (click)="selectZone('ZONE C')">Select Zone</button>
             </td>
           </tr>
+          <tr>
+            <td>ZONE D</td>
+            <td>1,900 THB</td>
+            <td>On Sale</td>
+            <td>
+              <button (click)="selectZone('ZONE D')">Select Zone</button>
+            </td>
+          </tr>
         </tbody>
       </table>
-      <p>Quantity: {{ selectedSeats.length }}</p>
-      <button (click)="buyTickets()">Buy Tickets</button>
+
+
+      <div class="quantity-box text-white" style="background-color: black;">
+        <p class="label">Quantity : {{ selectedSeats.length }}</p>
+      </div>
+      
+      <div class="selected-seats-box text-white" style="background-color: black;">
+        <p class="label">Selected Seats : {{ selectedSeats.join(', ') }}</p>
+      </div>
+      
+      <div class="buy-tickets-button-box text-white">
+        <button (click)="buyTickets">Buy Tickets</button>
+      </div>
+
+      
+      
     </div>
   </div>
   <p-dialog header="Select Seats" [(visible)]="displayDialog" [modal]="true" [resizable]="false" [style]="{ width: '50%' }">
+    <p id="countdown-timer">Time Left : 01:00</p>
     <div class="stage-image">
-      <img src="stage-image.jpg" alt="Stage Image">
+      <img class="popup-image" src="assets/Stage.jpg" alt="Stage Image">
     </div>
     <div class="seat-selection">
       <h3>Select Your Seats for {{ selectedZone }}</h3>
       <div class="seat-grid">
-        <div *ngFor="let seat of availableSeats">
-          <button [disabled]="isSeatTaken(seat)" (click)="selectSeat(seat)">Seat {{ seat }}</button>
-        </div>
+        <ng-container *ngFor="let seat of availableSeats; let i = index">
+          <button [disabled]="isSeatTaken(seat)"
+        (click)="selectSeat(seat)"
+        [style.background]="isSeatSelected(seat) ? 'linear-gradient(to right, red, orange)' : 'linear-gradient(to right, gray, darkgray)'"
+        [style.width]="seatButtonWidth"
+        class="seat-button">{{ seat }}
+          </button>
+
+          <br *ngIf="(i + 1) % 10 === 0" /> <!-- A line break after every 10 seats -->
+        </ng-container>
       </div>
-      <p>Selected Seats: {{ selectedSeats.join(', ') }}</p>
+      <div class="button-container">
+        <button class="reset-button" (click)="resetSelection()">Reset</button>
+      </div>
+      <p>Selected Seats : {{ selectedSeats.join(', ') }}</p>
       <button (click)="hideDialog()">Close</button>
-    </div>
+    </div>      
   </p-dialog>
-  
+  </div>
 </app-topbar>
