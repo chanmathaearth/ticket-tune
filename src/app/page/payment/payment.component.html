@@ -21,8 +21,7 @@
                     <p-dialog class="pop-up-addcard" header="Add Card" [(visible)]="showDialog" [modal]="true" [draggable]="false" [style]="{width: '500px', height: '1500px'}">
                         <div class='center'>
                             <div class='card'>
-                                <div class='front'>
-                                    
+                                <div class='front'>        
                                     <div class='middle'>
                                         <div class='cd-number'>
                                             <p>
@@ -48,8 +47,7 @@
                                             <p><span class='month'>{{ card.month }}</span>/<span class='year'>{{ card.year.slice(-2) }}</span></p>
                                         </div>      
                                     </div>  
-                                </div>
-                                
+                                </div>                 
                             </div>
                             <div class='form'>
                                 <form (submit)="addCard()">

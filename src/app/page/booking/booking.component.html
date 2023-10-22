@@ -1,65 +1,207 @@
 <app-topbar>
-  <div class="booking-container">
-    <div class="concert-info">
-      <img src="concert-image.jpg" alt="Concert Image">
-      <h2>Concert Title</h2>
-      <p>Concert Description goes here...</p>
+  <div class="background-color" style="background-color: #0e0e0e;">
+    <div class="horizontal-picture-container">
+      <img class="full-width-image" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-banner-event/e40b7f905a0111ee911101117567899b.jpg?format=basic&resize=w1440,h450" alt="Horizontal Picture">
     </div>
-
-    <div class="ticket-info">
-      <table>
-        <thead>
-          <tr>
-            <th>Ticket Type</th>
-            <th>Price</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ZONE A</td>
-            <td>4900 THB</td>
-            <td>On Sale</td>
-            <td>
-              <button (click)="selectZone('ZONE A')">Select Zone</button>
-            </td>
-          </tr>
-          <tr>
-            <td>ZONE B</td>
-            <td>3900 THB</td>
-            <td>On Sale</td>
-            <td>
-              <button (click)="selectZone('ZONE B')">Select Zone</button>
-            </td>
-          </tr>
-          <tr>
-            <td>ZONE C</td>
-            <td>2900 THB</td>
-            <td>On Sale</td>
-            <td>
-              <button (click)="selectZone('ZONE C')">Select Zone</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p>Quantity: {{ selectedSeats.length }}</p>
-      <button (click)="buyTickets()">Buy Tickets</button>
-    </div>
-  </div>
-  <p-dialog header="Select Seats" [(visible)]="displayDialog" [modal]="true" [resizable]="false" [style]="{ width: '50%' }">
-    <div class="stage-image">
-      <img src="stage-image.jpg" alt="Stage Image">
-    </div>
-    <div class="seat-selection">
-      <h3>Select Your Seats for {{ selectedZone }}</h3>
-      <div class="seat-grid">
-        <div *ngFor="let seat of availableSeats">
-          <button [disabled]="isSeatTaken(seat)" (click)="selectSeat(seat)">Seat {{ seat }}</button>
+    <div class="booking-container">
+      <div class="concert-info-container">
+        <img class="concert-image" style="box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.06), 0px 7px 9px rgba(0, 0, 0, 0.12), 0px 20px 25px -8px rgba(0, 0, 0, 0.18);" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/e0d3d4305a0111ee911101117567899b.jpg?format=basic&resize=w425,h610" alt="Concert Image">
+        <h3 class="concert-title text-white pl-8">Description</h3>
+        <div class="concert-title">
+          <hr class="title-underline" style="width: 85%; margin-left: 12%;">
+          <p-fieldset legend="Concert Description" [toggleable]="true" class="custom-fieldset">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dddddddddddddddddddddddddddddddddddddddddddddddddolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </p-fieldset>
         </div>
       </div>
-      <p>Selected Seats: {{ selectedSeats.join(', ') }}</p>
-      <button (click)="hideDialog()">Close</button>
+      <div class="ticket-info pr-8">
+        <div class="event-container text-white" style="background-color: black;">
+          <div class="event-date">
+            <span class="day">29</span>
+            <br>
+            <span>
+              <span class="bold">Wed/</span>Nov
+            </span>
+            <p-divider></p-divider>
+            <span class="pi pi-calendar-times" style="font-size: 2.5rem; color: rgb(255, 255, 255)"></span>
+          </div>
+          <div class="event-details">
+            <h3>JAMES ARTHUR SOUTH EAST ASIA TOUR 2023 - BANGKOK</h3>
+            <p-divider></p-divider>
+            <ul>
+              <span>
+                <span class="pi pi-spin pi-clock" style="color: green"></span> Wed 29 November 2023 • 20:00
+              </span>
+              <p-divider></p-divider>
+              <span>
+                <span class="pi pi-map-marker" style="color: red"></span> Union Hall
+              </span>
+            </ul>
+          </div>
+        </div>
+        <table style="margin-top: 30px;" class="styled-table">
+          <thead>
+            <tr>
+              <th>Ticket Type</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ZONE A</td>
+              <td>4,900 THB</td>
+              <td>On Sale</td>
+              <td>
+                <button (click)="selectZone('ZONE A')">Select Zone</button>
+              </td>
+            </tr>
+            <tr>
+              <td>ZONE B</td>
+              <td>3,900 THB</td>
+              <td>On Sale</td>
+              <td>
+                <button (click)="selectZone('ZONE B')">Select Zone</button>
+              </td>
+            </tr>
+            <tr>
+              <td>ZONE C</td>
+              <td>2,900 THB</td>
+              <td>On Sale</td>
+              <td>
+                <button (click)="selectZone('ZONE C')">Select Zone</button>
+              </td>
+            </tr>
+            <tr>
+              <td>ZONE D</td>
+              <td>1,900 THB</td>
+              <td>On Sale</td>
+              <td>
+                <button (click)="selectZone('ZONE D')">Select Zone</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="quantity-box text-white" style="background-color: black;">
+          <p class="label">Quantity : {{ selectedSeats.length }}</p>
+        </div>
+        <div class="selected-seats-box text-white" style="background-color: black;">
+          <p class="label">Total : {{ calculateTotal() }}</p>
+        </div>
+        <div class="buy-tickets-button-box text-white">
+          <button (click)="buyTickets()">Buy Tickets</button>
+        </div>
+      </div>
     </div>
-  </p-dialog>
-  
+    <p-dialog header="Select Seats" [(visible)]="displayDialog" [modal]="true" [resizable]="false" [style]="{ width: '50%' }">
+      <p id="countdown-timer">Time Left : 05:00</p>
+      <div class="stage-image">
+        <img class="popup-image" src="assets/Stage.jpg" alt="Stage Image">
+      </div>
+      <div class="seat-selection">
+        <h3>Select Your Seats for {{ selectedZone }}</h3>
+        <div class="seat-grid">
+          <ng-container *ngFor="let seat of availableSeats; let i = index">
+            <button [disabled]="isSeatTaken(seat)"
+                    (click)="selectSeat(seat)"
+                    [style.background]="isSeatSelected(seat) ? 'linear-gradient(to right, red, orange)' : 'linear-gradient(to right, gray, darkgray)'"
+                    [style.width]="seatButtonWidth"
+                    class="seat-button">{{ seat }}
+            </button>
+            <br *ngIf="(i + 1) % 10 === 0" /> <!-- A line break after every 10 seats -->
+          </ng-container>
+        </div>
+        <div class="button-container">
+          <button class="reset-button" (click)="resetSelection()">Reset</button>
+        </div>
+        <p>Selected Seats : {{ selectedSeats.join(', ') }}</p>
+        <button class="custom-close-button" (click)="hideDialog()">Close</button>
+      </div>
+    </p-dialog>
+    <p-dialog header="Booking Summary" [(visible)]="displaySummary" [modal]="true" [resizable]="false" [style]="{ width: '50%' }">
+      <div class="step-indicators">
+        <div class="step-indicator">
+          <div class="step-circle step-1">1</div>
+          <div class="step-label">Select Seats</div>
+        </div>
+        <div class="step-indicator">
+          <div class="step-circle step-2">2</div>
+          <div class="step-label">Select Payment Method</div>
+        </div>
+        <div class="step-indicator">
+          <div class="step-circle step-3">3</div>
+          <div class="step-label">Confirmation</div>
+        </div>
+      </div>
+      <p-divider align="center">
+        <div class="inline-flex align-items-center">
+          <i class="pi pi-ticket mr-2" style="color: orange;"></i>
+          <b>Summary</b>
+        </div>
+      </p-divider>
+      <div class="summary-content">
+        <p>Concert : {{ currentConcertName }}</p>
+        <p>Quantity : {{ selectedSeats.length }}</p>
+        <p class="pi pi-money-bill" style="color: green"></p> Total Price : {{ calculateTotal() }}
+        <p-divider></p-divider>
+        <h3>Selected Seats</h3>
+        <ul>
+          <li *ngFor="let seat of selectedSeatsSummary">
+            Seat : {{ seat.seat }}, {{ seat.zone }}
+          </li>
+        </ul>
+        <h3>Select Payment Method</h3>
+        <div class="payment-options">
+          <div class="payment-option">
+            <input type="radio" id="creditDebit" name="paymentMethod" value="creditDebit" [(ngModel)]="selectedPaymentMethod">
+            <label for="creditDebit">Credit/Debit Card</label>
+            <div *ngIf="selectedPaymentMethod === 'creditDebit'" class="card-info-container">
+              <div class="card-info-box">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" [(ngModel)]="cardNumber">
+              </div>
+              <div class="card-info-box">
+                <label for="nameOnCard">Name on Card:</label>
+                <input type="text" id="nameOnCard" [(ngModel)]="nameOnCard">
+              </div>
+              <div class="card-info-box">
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="text" id="expiryDate" [(ngModel)]="expiryDate">
+              </div>
+              <div class="card-info-box">
+                <label for="cvvCvc">CVV/CVC:</label>
+                <input type="text" id="cvvCvc" [(ngModel)]="cvvCvc">
+              </div>
+              <div class="select-card-section" *ngIf="selectedPaymentMethod === 'creditDebit'">
+                <h3>Select a Card</h3>
+                <div class="saved-cards-container">
+                  <div class="saved-card" *ngFor="let card of savedCards">
+                    <button (click)="selectCard(card)" class="select-button">Select</button>
+                    <div class="card-details">
+                      <p><strong>Card Number:</strong> {{ card.cardNumber }}</p>
+                      <p><strong>Name on Card:</strong> {{ card.nameOnCard }}</p>
+                      <p><strong>Expiry Date:</strong> {{ card.expiryDate }}</p>
+                      <p><strong>CVV/CVC:</strong> {{ card.cvvCvc }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="payment-option">
+            <input type="radio" id="promptPay" name="paymentMethod" value="promptPay" [(ngModel)]="selectedPaymentMethod">
+            <label for="promptPay">PromptPay</label>
+            <div *ngIf="selectedPaymentMethod === 'promptPay'" class="qr-code-container">
+              <img src="assets/sample-promptpay-qr-code-blurred.jpg" alt="QR Code PromptPay" [style.max-width.px]="350" [style.max-height.px]="350">
+            </div>
+          </div>
+        </div>
+        <button class="confirm-button" (click)="confirmPayment()">Confirm</button>
+      </div>
+    </p-dialog>
+  </div>
 </app-topbar>
