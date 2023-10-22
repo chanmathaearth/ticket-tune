@@ -95,7 +95,7 @@
           <p class="label">Total : {{ calculateTotal() }}</p>
         </div>
         <div class="buy-tickets-button-box text-white">
-          <button (click)="buyTickets()">Buy Tickets</button>
+          <button (click)="buyTickets()" [disabled]="selectedSeats.length === 0">Buy Tickets</button>
         </div>
       </div>
     </div>
@@ -162,9 +162,9 @@
             <input type="radio" id="creditDebit" name="paymentMethod" value="creditDebit" [(ngModel)]="selectedPaymentMethod" class="mb-5">
             <img src="https://s3-ap-southeast-1.amazonaws.com/tm-public-file/checkout-credit/crediticon.svg" alt="" style="width: 80px;" class="ml-2">
             <div *ngIf="selectedPaymentMethod === 'creditDebit'" class="card-info-container">
-              <div class="card-info-box">
+              <div class="card-info-box" style="width: 150px;">
                 <label for="cardNumber">Card Number:</label>
-                <input type="text" id="cardNumber" [(ngModel)]="cardNumber">
+                <input type="text" id="cardNumber" [(ngModel)]="cardNumber" style="width: 160px;">
               </div>
               <div class="card-info-box">
                 <label for="nameOnCard">Name on Card:</label>
@@ -174,7 +174,7 @@
                 <label for="expiryDate">Expiry Date:</label>
                 <input type="text" id="expiryDate" [(ngModel)]="expiryDate">
               </div>
-              <div class="card-info-box">
+              <div class="card-info-box ">
                 <label for="cvvCvc">CVV/CVC:</label>
                 <input type="text" id="cvvCvc" [(ngModel)]="cvvCvc">
               </div>
