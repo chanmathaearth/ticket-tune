@@ -19,7 +19,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { PromogenComponent } from './page/promogen/promogen.component';
 import { PromooverviewComponent } from './page/promooverview/promooverview.component';
-
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 @NgModule({
   declarations: [
@@ -46,6 +46,8 @@ import { PromooverviewComponent } from './page/promooverview/promooverview.compo
     PrimeNGModule,
     ButtonModule,
     DialogModule,
+    ConfirmPopupModule,
+    
   ],
   providers: [
     MessageService,

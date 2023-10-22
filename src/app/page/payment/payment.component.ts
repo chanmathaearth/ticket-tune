@@ -5,7 +5,10 @@ export interface Card {
     expiryDate: string;
     cvv: string;
     cardName: string;
+    month: string;  
+    year: string; 
 }
+
 
 @Component({
     selector: 'app-payment',
@@ -13,46 +16,74 @@ export interface Card {
     styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent {
-    selectedMethod = 'credit';
+    selectedMethod: string = 'credit';
     addedCards: Card[] = [];
     showDialog: boolean = false;
 
-    selectPaymentMethod(method: string) {
+    card: Card & { month: string; year: string } = {
+        cardNumber: '',
+        expiryDate: '',
+        cvv: '',
+        cardName: '',
+        month: '',
+        year: ''
+    };
+
+    selectPaymentMethod(method: string): void {
         this.selectedMethod = method;
     }
 
-    addCard(cardNumber: string, expiry: string, cvc: string, cardOwner: string) {
-      const card: Card = {
-          cardNumber,
-          expiryDate: expiry,
-          cvv: cvc,
-          cardName: cardOwner
-      };
-      this.addedCards.push(card);
-      this.showDialog = false;
+    addCard(): void {
+        this.card.expiryDate = `${this.card.month}/${this.card.year}`;
+        const newCard = { ...this.card };
+        this.addedCards.push(newCard);
+        this.showDialog = false;
+
+        this.resetCard();
     }
 
-    onMonthYearChange(event: any): void {
-        let value = event.target.value.replace(/\D/g, '');
-        if (value.length > 1) {
-            value = `${value.slice(0, 2)}/${value.slice(2, 4)}`;
-        }
-        event.target.value = value.slice(0, 5);
+    getMaskedCardNumber(cardNumber: string): string {
+        const cleanedCardNumber = this.cleanNumber(cardNumber);
+        const visibleDigits = cleanedCardNumber.slice(-4);
+        return '**** **** **** ' + visibleDigits;
     }
+    
+
+    resetCard(): void {
+        this.card = {
+            cardNumber: '',
+            expiryDate: '',
+            cvv: '',
+            cardName: '',
+            month: '01', 
+            year: `${this.currentYear}` 
+        };
+    }    
 
     formatInput(event: any) {
-        let value = event.target.value.replace(/ /g, ''); 
+        let value = event.target.value.replace(/\D/g, '');
         let newValue = '';
         for (let i = 0; i < value.length; i++) {
-            if (i > 0 && i % 4 === 0) {
+            if (i > 0 && i % 4 === 0 && i < 16) { 
                 newValue += ' ';
             }
             newValue += value[i];
         }
-        event.target.value = newValue;
+        event.target.value = newValue.slice(0, 19);
     }
+    
+    cleanNumber(num: string): string {
+        return num.replace(/\D/g, '');
+    }
+    
+    
+    currentYear = new Date().getFullYear();
+    years: number[] = Array.from({length: 15}, (_, i) => this.currentYear + i);
 
-    removeCard(index: number) {
+
+    removeCard(index: number): void {
         this.addedCards.splice(index, 1);
-    }  
+    }
 }
+
+

@@ -5,6 +5,10 @@
     height: 100vh;
     background-color: #202124; 
     padding: 2% 0;
+    background-image: url(https://images4.alphacoders.com/457/4574.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .allpromocontainer {
@@ -12,7 +16,8 @@
     flex-direction: column;
     justify-content: space-between;
     width: 42%;
-    background-color: #2b2e31;  
+    background-color: rgba(43, 46, 49, 0.75); 
+    backdrop-filter: blur(10px);  
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     overflow: visible;
@@ -40,6 +45,7 @@
     margin-top: 20px;
     background-color: #3c4043;  
     color: #e0e0e0; 
+    border-radius: 10px;
 }
 
 .inline-flex {
@@ -74,3 +80,8 @@
 }
 
 
+.back-btn2 {
+    position:absolute;
+    top: 10.5%;
+    left: 29.2%;
+}

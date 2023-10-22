@@ -1,5 +1,6 @@
 <app-topbar>
     <div class="outer-container">
+        <p-button class="back-btn2" label="Back to Promotion " [routerLink]="['/promooverview']" *ngIf="!issumary"></p-button>
         <div class="allpromocontainer">
             <div class="promo-container" [class.hidden]="issumary">
                 <form>

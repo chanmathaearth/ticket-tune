@@ -3,7 +3,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #202124;  
+    background-color: #202124;
+    background-image: url(https://images4.alphacoders.com/457/4574.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .allpromocontainer {
@@ -11,9 +15,8 @@
     flex-direction: column;
     width: 75%;
     height: 89%;
-    background-color: #2b2e31;  
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    color: #e0e0e0;  
+    background-color: rgba(43, 46, 49, 0.85); 
+    color: #e0e0e0;
 }
 
 .promo-container {
