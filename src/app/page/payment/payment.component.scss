@@ -1,10 +1,10 @@
 .outer-container {
+    z-index: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #202124;
-    background-image: url(https://images4.alphacoders.com/457/4574.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
