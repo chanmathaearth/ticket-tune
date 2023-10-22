@@ -1,43 +1,45 @@
 <app-topbar>
   <div class="background-color" style="background-color: #0e0e0e;">
     <div class="horizontal-picture-container">
-      <img class="full-width-image" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-banner-event/e40b7f905a0111ee911101117567899b.jpg?format=basic&resize=w1440,h450" alt="Horizontal Picture">
+      <img class="full-width-image" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-banner-event/cdcf5c606c2611ee911101117567899b.jpg?format=basic&resize=w1440,h450" alt="Horizontal Picture">
     </div>
     <div class="booking-container">
       <div class="concert-info-container">
-        <img class="concert-image" style="box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.06), 0px 7px 9px rgba(0, 0, 0, 0.12), 0px 20px 25px -8px rgba(0, 0, 0, 0.18);" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/e0d3d4305a0111ee911101117567899b.jpg?format=basic&resize=w425,h610" alt="Concert Image">
+        <img class="concert-image" style="box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.06), 0px 7px 9px rgba(0, 0, 0, 0.12), 0px 20px 25px -8px rgba(0, 0, 0, 0.18);" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/cb9c01a06c2611ee911101117567899b.jpg?format=basic&resize=w425,h610" alt="Concert Image">
         <h3 class="concert-title text-white pl-8">Description</h3>
         <div class="concert-title">
           <hr class="title-underline" style="width: 85%; margin-left: 12%;">
           <p-fieldset legend="Concert Description" [toggleable]="true" class="custom-fieldset">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dddddddddddddddddddddddddddddddddddddddddddddddddolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <p> 24 ตุลา (อังคาร) Office Syndrome Band + YOURHEART + ALISON @ Blueprint</p>
+            <p>Livehouse</p>
+            <p>รวมวงป็อปที่เราเคยส่งให้เธอฟัง แต่เธอกลับเอาไปส่งให้มันต่อ</p>
+            <p>🚪 ประตูเปิด 19:30</p>
+            <p>👨‍👩‍👧‍👦 ไม่จำกัดอายุ</p>
+            <p>#BlueprintLivehouse #OfficieSyndromeBand #YOURHEART #ALISON</p>
           </p-fieldset>
         </div>
       </div>
       <div class="ticket-info pr-8">
         <div class="event-container text-white" style="background-color: black;">
           <div class="event-date">
-            <span class="day">29</span>
+            <span class="day">24</span>
             <br>
             <span>
-              <span class="bold">Wed/</span>Nov
+              <span class="bold">Tue/</span>Nov
             </span>
             <p-divider></p-divider>
             <span class="pi pi-calendar-times" style="font-size: 2.5rem; color: rgb(255, 255, 255)"></span>
           </div>
           <div class="event-details">
-            <h3>JAMES ARTHUR SOUTH EAST ASIA TOUR 2023 - BANGKOK</h3>
+            <h3>Blueprint Livehouse: Office Syndrome + YOURHEART + ALISON</h3>
             <p-divider></p-divider>
             <ul>
               <span>
-                <span class="pi pi-spin pi-clock" style="color: green"></span> Wed 29 November 2023 • 20:00
+                <span class="pi pi-spin pi-clock" style="color: green"></span> Tue 24 November 2023 • 19:30
               </span>
               <p-divider></p-divider>
               <span>
-                <span class="pi pi-map-marker" style="color: red"></span> Union Hall
+                <span class="pi pi-map-marker" style="color: red"></span> Blueprint Livehouse
               </span>
             </ul>
           </div>
@@ -54,7 +56,7 @@
           <tbody>
             <tr>
               <td>ZONE A</td>
-              <td>4,900 THB</td>
+              <td>599 THB</td>
               <td>On Sale</td>
               <td>
                 <button (click)="selectZone('ZONE A')">Select Zone</button>
@@ -62,7 +64,7 @@
             </tr>
             <tr>
               <td>ZONE B</td>
-              <td>3,900 THB</td>
+              <td>450 THB</td>
               <td>On Sale</td>
               <td>
                 <button (click)="selectZone('ZONE B')">Select Zone</button>
@@ -70,7 +72,7 @@
             </tr>
             <tr>
               <td>ZONE C</td>
-              <td>2,900 THB</td>
+              <td>400 THB</td>
               <td>On Sale</td>
               <td>
                 <button (click)="selectZone('ZONE C')">Select Zone</button>
@@ -78,7 +80,7 @@
             </tr>
             <tr>
               <td>ZONE D</td>
-              <td>1,900 THB</td>
+              <td>300 THB</td>
               <td>On Sale</td>
               <td>
                 <button (click)="selectZone('ZONE D')">Select Zone</button>
@@ -157,8 +159,8 @@
         <h3>Select Payment Method</h3>
         <div class="payment-options">
           <div class="payment-option">
-            <input type="radio" id="creditDebit" name="paymentMethod" value="creditDebit" [(ngModel)]="selectedPaymentMethod">
-            <label for="creditDebit">Credit/Debit Card</label>
+            <input type="radio" id="creditDebit" name="paymentMethod" value="creditDebit" [(ngModel)]="selectedPaymentMethod" class="mb-5">
+            <img src="https://s3-ap-southeast-1.amazonaws.com/tm-public-file/checkout-credit/crediticon.svg" alt="" style="width: 80px;" class="ml-2">
             <div *ngIf="selectedPaymentMethod === 'creditDebit'" class="card-info-container">
               <div class="card-info-box">
                 <label for="cardNumber">Card Number:</label>
@@ -193,10 +195,12 @@
             </div>
           </div>
           <div class="payment-option">
-            <input type="radio" id="promptPay" name="paymentMethod" value="promptPay" [(ngModel)]="selectedPaymentMethod">
-            <label for="promptPay">PromptPay</label>
+            <input type="radio" id="promptPay" name="paymentMethod" value="promptPay" [(ngModel)]="selectedPaymentMethod" class="mb-5">
+            <img src="https://s3-ap-southeast-1.amazonaws.com/tm-public-file/checkout-credit/PromptPay.svg" alt="" style="width: 150px;" class="ml-2">
             <div *ngIf="selectedPaymentMethod === 'promptPay'" class="qr-code-container">
-              <img src="assets/sample-promptpay-qr-code-blurred.jpg" alt="QR Code PromptPay" [style.max-width.px]="350" [style.max-height.px]="350">
+              <div class="p-5 ml-5 text-center">
+              <img src="https://apps.odoo.com/apps/icon_image?module_id=87744" alt="QR Code PromptPay" [style.max-width.px]="350" [style.max-height.px]="350">
+              </div>
             </div>
           </div>
         </div>
