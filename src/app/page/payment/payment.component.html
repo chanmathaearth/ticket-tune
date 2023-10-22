@@ -13,50 +13,116 @@
                 <div class="container-content overflow-auto">
                     <!-- ตอนไม่มีบัตร -->
                     <div *ngIf="selectedMethod === 'credit' && addedCards.length === 0" class="add-card-section">
-                        <img src="https://cdn.icon-icons.com/icons2/3862/PNG/512/card_add_icon_240406.png" width="50px" height="50px" class="add-card" (click)="showDialog = true"/>
+                        <img src="https://cdn.icon-icons.com/icons2/3862/PNG/512/card_add_icon_240406.png" width="50px" height="50px" class="add-card" (click)="showDialog = true" style="filter: brightness(6)" />
                         <p class="addcardtext">Add card here</p>
                     </div>
 
                     <!-- Pop up ตอนกดเพิ่มบัตร -->
-                    <p-dialog class="pop-up-addcard" header="Add Card" [(visible)]="showDialog" [modal]="true" [draggable]="false" [style]="{width: '500px', 'background-color': 'red'} "  >
-                        <div class="card-details-form">
-                            <div class="block font-bold text-center p-4 border-round mb-1">
-                                <div class="field-item">
-                                <p >Card Number</p>
-                                <input #cardNumberInput type="text" pInputText maxlength="19" (input)="formatInput($event)" />
+                    <p-dialog class="pop-up-addcard" header="Add Card" [(visible)]="showDialog" [modal]="true" [draggable]="false" [style]="{width: '500px', height: '1500px'}">
+                        <div class='center'>
+                            <div class='card'>
+                                <div class='front'>        
+                                    <div class='middle'>
+                                        <div class='cd-number'>
+                                            <p>
+                                            <span class='num-1'>{{ cleanNumber(card.cardNumber).slice(0,4) }}</span>
+                                            <span class='num-2'>{{ cleanNumber(card.cardNumber).slice(4,8) }}</span>
+                                            <span class='num-3'>{{ cleanNumber(card.cardNumber).slice(8,12) }}</span>
+                                            <span class='num-4'>{{ cleanNumber(card.cardNumber).slice(12,16) }}</span>
+                                            </p>
+                                        </div>
+                                    </div>  
+                                    <div class='bottom'>
+                                        
+                                        <div class='cardholder'>
+                                            <p class='label'>Cardholder</p>
+                                            <p class='holder'>{{ card.cardName }}</p>
+                                        </div>
+                                        <div class='expires'>
+                                            <p class='label'>CVC</p>
+                                            <p class='holder' >{{ card.cvv }}</p>
+                                        </div>
+                                        <div class='expires'>
+                                            <p class='label'>Exp</p>
+                                            <p><span class='month'>{{ card.month }}</span>/<span class='year'>{{ card.year.slice(-2) }}</span></p>
+                                        </div>      
+                                    </div>  
+                                </div>                 
                             </div>
-                            </div>
-                            <div class="block font-bold text-center p-4 border-round mb-1">
-                                <div class="inline-fields">
-                                    <div class="field-item">
-                                        <p>Month / Year</p>
-                                        <input #expiryInput type="text" pInputText (input)="onMonthYearChange($event)" maxlength="5" placeholder="MM/YY" />
+                            <div class='form'>
+                                <form (submit)="addCard()">
+                                    <div class='cd-numbers'>
+                                        <label>Card Number</label>
+                                        <div class='fields'>
+                                            <input [(ngModel)]="card.cardNumber" (keyup)="formatInput($event)" maxlength="19" name="cardNumber">
+                                        </div>
+                                    </div>  
+                                    <div class='cd-holder'>
+                                        <label for='cd-holder-input'>Cardholder name</label>
+                                        <input [(ngModel)]="card.cardName" type='text' id='cd-holder-input' name="cardName">
                                     </div>
-                                    <div class="field-item">
-                                        <p>CVC</p>
-                                        <input #cvcInput type="text" pInputText maxlength="3"/>
+                                    
+                                    <div class='cd-validate'>
+                                        <div class='cvc'>
+                                            <label for='cvc-input'>CVC</label>
+                                            <input [(ngModel)]="card.cvv" type='text' id='cvc-input' maxlength="3" name="cvv">
+                                        </div>
+                                        <div class='expiration'>
+                                            <div class='field'>
+                                                <label for='month'>Month</label>
+                                                <select [(ngModel)]="card.month" id='month' name="month">
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
+                                            </div>
+                                            <div class='field'>
+                                                <label for='year'>Year</label>
+                                                <select [(ngModel)]="card.year" id='year' name="year">
+                                                    <option *ngFor="let year of years" [value]="year">{{ (year + '').slice(-2) }}</option>
+                                                </select>
+                                            </div>                                            
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="block font-bold text-center p-4 border-round mb-1">
-                                <p>Card Owner</p>
-                                <input #cardOwnerInput type="text" pInputText />
-                            </div>
-                            <div class="save-btn-section">
-                                <p-button (onClick)="addCard(cardNumberInput.value, expiryInput.value, cvcInput.value, cardOwnerInput.value)" class="block font-bold text-center p-4 border-round mb-1 save-btn">Save</p-button>
-                            </div>
+                                    <button type="submit" class='submit' >Submit<i class="fa fa-credit-card" aria-hidden="true"></i></button>
+                                </form>  
+                            </div>  
                         </div>
                     </p-dialog>
 
                     <!-- ส่วนแสดงหลังกดเพิ่มบัตร -->
                     <div *ngFor="let card of addedCards; let i = index" class="card-details-section">
-                        <h2>Card Details</h2>
-                        <p><strong>Card Number:</strong> {{ card.cardNumber }}</p>
-                        <p><strong>Card Owner:</strong> {{ card.cardName }}</p>
-                        <p><strong>Expiry Date:</strong> {{ card.expiryDate }}</p>
-                        <p><strong>CVC:</strong> {{ card.cvv }}</p>
+                        
+
+                        <!-- Card Details -->
+                        <div class="card-details">
+                            <div class="cd-number">
+                                <p>
+                                    {{ getMaskedCardNumber(card.cardNumber) }}
+                                </p>
+                            </div>
+                            
+                            <div class="cardholder">
+                                <p class="label">Cardholder</p>
+                                <p class="holder">{{ card.cardName }}</p>
+                            </div>
+                            <div class="expires">
+                                <p class="label">Expiry date</p>
+                                <p><span class="month">{{ card.month }}</span>/<span class="year">{{ card.year.slice(-2) }}</span></p>
+                            </div>
+                                           
+                        </div>
                         <i class="pi pi-times deletebtn" (click)="removeCard(i)"></i>
-                    </div>                
+                    </div>
                 </div>
             </div>
         </div>

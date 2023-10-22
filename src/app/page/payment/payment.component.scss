@@ -3,15 +3,19 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #202124; 
+    background-color: #202124;
+    background-image: url(https://images4.alphacoders.com/457/4574.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .allpaymentcontainer {
     display: flex;
     width: 75%;
     height: 85%;
-    background-color: #2b2e31; 
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(43, 46, 49, 0.85); 
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
     color: #e0e0e0; 
 
@@ -19,6 +23,7 @@
         display: flex;
         width: 100%;
         border-radius: 10px;
+        
 
         .sidebar-payment {
             margin-bottom: 10%;
@@ -55,9 +60,9 @@
 
         .container-content {
             padding: 20px;
-            background-color: #343638;
             flex: 1;
             position: relative;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
 
             h2 {
                 font-size: 20px;
@@ -123,8 +128,8 @@
 
 .addcardtext {
     position: absolute;
-    top: 60%;
-    left: 50%;
+    top: 55%;
+    left: 50.1%;
     transform: translate(-50%, -50%);
     font-weight: 600;
     color: #999;
@@ -155,5 +160,434 @@
 }
 
 p {
-    color: #bdbdbd;
+    color: white;
 }
+
+:host ::ng-deep { 
+    .p-dialog .p-dialog-header {
+        background: #3c4043;
+    }
+    .p-dialog-title { 
+        color: #bdbdbd !important; 
+    } 
+    .p-dialog .p-dialog-content { 
+        background: #3c4043 !important; 
+        color: #3c4043 !important; 
+    } 
+    .p-dialog .p-dialog-footer { 
+        background: #3c4043 !important; 
+    } 
+    .p-dialog .p-dialog-header .p-dialog-header-icon:focus { 
+        box-shadow: 0 0 0 0.2rem #3c4043 !important; 
+    } 
+    button.p-ripple.p-element.p-dialog-header-icon.p-dialog-header-close { 
+        color: #f2f5f7 !important; 
+    } 
+    .p-dialog .p-dialog-header .p-dialog-header-icon:enabled:hover { 
+        background: #3c4043 !important; 
+        color: #a5c6e0 !important; 
+    } 
+    .p-button.p-button-text:enabled:hover { 
+        background: #3c4043 !important; 
+        color: #d7bddc !important; 
+    } 
+    .p-button.p-button-text {   
+        color: #3c4043 !important; 
+    } 
+}
+
+//ส่วนหน้า dialog เพิ่มบัตร
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+input, select, textarea {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.credits {
+	padding: 20px;
+	font-size: 25px;
+}
+
+.credits a {
+	color: #4FB0C6;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.card {
+	position: relative;
+	color: white;
+	transform-style: preserve-3d;
+	transition: 0.5s ease-in-out;
+	width: 400px;
+	height: 250px;
+	margin: auto;
+	z-index: 2;
+}
+
+@media(max-width: 500px) {
+	.card {
+		width: 300px;
+		height: 187.5px;
+	}
+}
+
+
+
+.card .front, .card .back {
+	width: 400px;
+	height: 250px;
+	background: linear-gradient(-45deg, #4FB0C6, darken(#4F86C6, 5%));
+	padding: 20px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 10px;
+	overflow: hidden;
+	transition: 0.5s ease-in-out;
+}
+
+@media(max-width: 500px) {
+	.card .front, .card .back {
+		width: 300px;
+		height: 187.5px;
+	}
+}
+
+.card .front:after, .card .back:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 400px;
+	height: 250px;
+	transition: 0.5s ease-in-out;
+	z-index: -1;
+	opacity: 0.15;
+	background-image: url("http://image.flaticon.com/icons/svg/126/126511.svg");
+	background-repeat: no-repeat;
+	background-size: 75%;
+	background-position: 150px center;
+}
+
+@media(max-width: 500px) {
+	.card .front:after, .card .back:after {
+		width: 300px;
+		height: 187.5px;
+	}
+}
+
+.card .front {
+	z-index: 5;
+	transform: rotateY(0deg);
+}
+
+.card .back {
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transform: rotateY(180deg);
+}
+
+.card .back .label {
+	font-size: 12.5px;
+	font-weight: bold;
+	color: rgba(lighten(#4FB0C6, 40%), .85);
+	margin-right: 5px;
+}
+
+.card .back .top {
+	padding-top: 40px;
+	transition: 0.5s ease-in-out;
+}
+
+@media (max-width: 500px) {
+	.card .back .top {
+		padding-top: 15px;
+	}
+}
+
+.card .back .top .magstripe {
+	width: 100%;
+	height: 50px;
+	background: #333;
+}
+
+.card .back .middle {
+	margin-top: -40px;
+	padding: 0 20px;
+	text-align: right;
+}
+
+.card .back .middle .cvc {
+	width: 100%;
+	height: 40px;
+	background: white;
+	color: black;
+	line-height: 40px;
+	padding: 0 10px;
+	border-radius: 10px;
+}
+
+.card .front {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.card .front .middle .cd-number p {
+	margin-bottom: 0;
+}
+
+.card .front .middle .cd-number p span {
+	margin-right: 20px;
+	font-size: 25px;
+}
+
+@media(max-width: 500px) {
+	.card .front .middle .cd-number p span {
+		font-size: 20px;
+	}
+}
+
+.card .front .bottom {
+	display: flex;
+	justify-content: space-between;
+}
+
+.card .front .bottom .cardholder .label, .card .front .bottom .expires .label {
+	font-size: 12.5px;
+	font-weight: bold;
+	color: rgba(lighten(#4FB0C6, 40%), .85);
+}
+
+.card .front .top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.card .front .top .cardType svg, .card .front .top .cardType img {
+	width: 70px;
+	height: 50px;
+	transition: 0.5s ease-in-out;
+}
+
+@media(max-width: 500px) {
+	.card .front .top .cardType svg, .card .front .top .cardType img {
+		width: 50px;
+		height: 35px;
+	}
+}
+
+.card .front .top .chip {
+	width: 70px;
+	height: 50px;
+	background: linear-gradient(-45deg, lighten(#d9e1e8, 2.5%), #9baec8);
+	position: relative;
+	border-radius: 5px;
+	transition: 0.5s ease-in-out;
+}
+
+@media(max-width: 500px) {
+	.card .front .top .chip {
+		width: 50px;
+		height: 35px;
+	}
+}
+
+.card .front .top .chip:after {
+	content: '';
+	display: block;
+	width: 50px;
+	height: 30px;
+	transition: 0.5s ease-in-out;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 2px solid darken(#9baec8, 20%);
+	opacity: 0.35;
+	border-radius: 5px;
+}
+
+@media(max-width: 500px) {
+	.card .front .top .chip:after {
+		width: 35px;
+		height: 20px;
+	}
+}
+
+.form {
+	width: 450px;
+	margin: auto;
+	padding: 20px;
+	box-shadow: 0px 1px 10px rgba(black, 0.35);
+	margin-top: -20px;
+	border-radius: 10px;
+	transition: 0.5s ease-in-out;
+}
+
+
+.form button.submit {
+	display: block;
+	padding: 20px 5px;
+	width: 100%;
+	margin-top: 20px;
+	background: #2b90d9;
+	color: white;
+	border-radius: 5px;
+	outline: 0;
+	border: none;
+	transition: 0.15s ease-in-out;
+    
+}
+
+.form button.submit:hover {
+	background: darken(#2b90d9, 2.5%);
+}
+
+@media(max-width: 500px) {
+	.form {
+		width: 300px;
+		margin-top: -25px;
+	}
+}
+
+.form input, .form select {
+	padding: 10px 5px;
+	border-radius: 5px;
+	outline: 0;
+	border: none;
+	box-shadow: 0px 0px 5px #2b90d9;
+}
+
+.form .cd-validate {
+	display: flex;
+	justify-content: space-between;
+}
+
+.form .cd-validate .expiration {
+	display: flex;
+	justify-content: space-between;
+}
+
+.form .cd-validate .expiration .field:last-child {
+	margin-left: 10px;
+}
+
+.form .cd-validate .cvc {
+	text-align: right;
+}
+
+.form .cd-validate .cvc input#cvc {
+    width: 50px;
+}
+
+.form .cd-validate label {
+	display: block;
+	margin-bottom: 10px;
+    color: white;
+}
+
+.form .cd-holder {
+	margin: 20px 0;
+}
+
+.form .cd-holder label {
+	display: block;
+	margin-bottom: 10px;
+    color: white;
+}
+
+.form .cd-holder input {
+	width: 100%;
+}
+
+.form .cd-numbers {
+	margin: 20px 0;
+}
+
+.form .cd-numbers span {
+	margin: 5px ;
+}
+
+.form .cd-numbers label {
+	display: block;
+	margin-bottom: 10px;
+    color: white;
+}
+
+.form .cd-numbers .fields {
+	display: flex;
+}
+
+.form .cd-numbers .fields input {
+	width: 100%;
+	margin: 0 10px;
+}
+
+.form .cd-numbers .fields input:first-child {
+	margin-left: 0;
+}
+
+.form .cd-numbers .fields input:last-child {
+	margin-right: 0;
+}
+
+//ส่วนหลังจากเพิ่มบัตร
+.card-details-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #36393f; 
+    background-color: #2f3136;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.35); 
+    position: relative;
+    top: -20px;
+
+    
+    .deletebtn {
+        cursor: pointer;
+        color: #f04747; 
+        margin-left: auto; /* จัดเรียงไปชิดขวาสุด */
+    }
+
+    .card-details {
+        display: flex;
+        flex-direction: column;
+
+        .cd-number {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            p {
+                display: flex;
+                justify-content: space-between;
+                color: #ffffff; 
+            }
+        }
+
+        .cardholder, .expires {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+
+            .label {
+                color: #888; 
+            }
+        }
+    }
+}
+
+
+

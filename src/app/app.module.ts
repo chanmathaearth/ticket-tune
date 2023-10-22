@@ -20,6 +20,7 @@ import { DialogModule } from 'primeng/dialog';
 import { FieldsetModule } from 'primeng/fieldset';
 import { PromogenComponent } from './page/promogen/promogen.component';
 import { PromooverviewComponent } from './page/promooverview/promooverview.component';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { StepsModule } from 'primeng/steps';
 
 
@@ -49,8 +50,10 @@ import { StepsModule } from 'primeng/steps';
     PrimeNGModule,
     ButtonModule,
     DialogModule,
+    ConfirmPopupModule,
     FieldsetModule,
     StepsModule,
+
   ],
   providers: [
     MessageService,
