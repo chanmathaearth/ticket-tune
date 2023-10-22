@@ -217,6 +217,7 @@ buyTickets() {
   this.selectedSeats = previousSelectedSeats;
 
   this.selectedSeatsSummary = seatSummary;
+
   if (this.selectedPaymentMethod === 'creditDebit') {
     // Display the summary dialog
     this.displaySummary = true;
@@ -296,14 +297,8 @@ savedCards: any[] = [
   {
     cardNumber: '1234 5678 9012 3456',
     nameOnCard: 'John Doe',
-    expiryDate: '12/24',
+    expiryDate: '01/25',
     cvvCvc: '123',
-  },
-  {
-    cardNumber: '9999 9999 9999 9999',
-    nameOnCard: 'Joe Ray',
-    expiryDate: '10/24',
-    cvvCvc: '456',
   },
   // Add more saved card objects as needed
 ];
