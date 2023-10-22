@@ -147,10 +147,10 @@ export class BookingComponent {
   
   calculateTotal(): string {
     const ticketPrices: { [zone: string]: number } = {
-      'ZONE A': 4900,
-      'ZONE B': 3900,
-      'ZONE C': 2900,
-      'ZONE D': 1900,
+      'ZONE A': 599,
+      'ZONE B': 450,
+      'ZONE C': 400,
+      'ZONE D': 300,
     };
   
     const selectedSeatsByZone: { [zone: string]: string[] } = {};
