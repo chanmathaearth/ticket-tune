@@ -180,7 +180,33 @@
               </div>
               <div class="select-card-section" *ngIf="selectedPaymentMethod === 'creditDebit'">
                 <h3>Select a Card</h3>
-                <div class="saved-cards-container">
+                <div class='center2' *ngFor="let card of savedCards">
+                  <div class='card'>
+                      <div class='front'>        
+                          <div class='middle'>
+                              <div class='cd-number'>
+                                <p><strong>Card Number:</strong> {{ card.cardNumber }}</p>
+                              </div>
+                          </div>  
+                         <div class='bottom'>
+                              <div class='cardholder'>
+                                  <p class='label'>Cardholder</p>
+                                  <p><strong>Name on Card:</strong> {{ card.nameOnCard }}</p>
+                              </div>
+                              <div class='expires'>
+                                  <p class='label'>CVC</p>
+                                  <p><strong>Expiry Date:</strong> {{ card.expiryDate }}</p>
+                              </div>
+                              <div class='expires'>
+                                  <p class='label'>Exp</p>
+                                  <p><strong>CVV/CVC:</strong> {{ card.cvvCvc }}</p>
+                              </div>      
+                          </div>
+                          <button (click)="selectCard(card)" class="select-button">Select</button>  
+                      </div>                 
+                  </div>
+              </div>
+                <!-- <div class="saved-cards-container">
                   <div class="saved-card" *ngFor="let card of savedCards">
                     <button (click)="selectCard(card)" class="select-button">Select</button>
                     <div class="card-details">
@@ -190,7 +216,7 @@
                       <p><strong>CVV/CVC:</strong> {{ card.cvvCvc }}</p>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
