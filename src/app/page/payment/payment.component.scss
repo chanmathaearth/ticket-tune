@@ -205,6 +205,13 @@ body {
 	font-family: 'Ubuntu', sans-serif;
 }
 
+.center2 {
+    display: flex;            
+    justify-content: center; 
+    align-items: center;     
+}
+
+
 input, select, textarea {
 	font-family: 'Ubuntu', sans-serif;
 }
@@ -227,6 +234,7 @@ input, select, textarea {
 	transition: 0.5s ease-in-out;
 	width: 400px;
 	height: 250px;
+    flex: 1;
 	margin: auto;
 	z-index: 2;
 }
@@ -435,6 +443,13 @@ input, select, textarea {
 	transition: 0.5s ease-in-out;
 }
 
+.cardnumfont {
+    font-size: 32px;
+}
+
+.addbtn {
+    margin-left: 450px;
+}
 
 .form button.submit {
 	display: block;

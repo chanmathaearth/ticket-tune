@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConfirmationService } from 'primeng/api';
 
 export interface Card {
     cardNumber: string;
@@ -17,7 +18,14 @@ export interface Card {
 })
 export class PaymentComponent {
     selectedMethod: string = 'credit';
-    addedCards: Card[] = [];
+    addedCards: Card[] = [{
+        cardNumber: '1234 5678 9012 3456',
+        expiryDate: '01/25',
+        cvv: '123',
+        cardName: 'John Doe',
+        month: '01',
+        year: '2025'
+    }];
     showDialog: boolean = false;
 
     card: Card & { month: string; year: string } = {
@@ -29,6 +37,8 @@ export class PaymentComponent {
         year: ''
     };
 
+    constructor(private confirmationService: ConfirmationService) { }
+    
     selectPaymentMethod(method: string): void {
         this.selectedMethod = method;
     }
@@ -75,6 +85,10 @@ export class PaymentComponent {
     cleanNumber(num: string): string {
         return num.replace(/\D/g, '');
     }
+    maskCVV(cvv: string): string {
+        return '*'.repeat(cvv.length);
+    }
+    
     
     
     currentYear = new Date().getFullYear();
@@ -82,8 +96,14 @@ export class PaymentComponent {
 
 
     removeCard(index: number): void {
+        this.confirmationService.confirm({
+            message: 'Are you sure you want to delete this card?',
+            header: 'Confirm Deletion',
+            icon: 'pi pi-exclamation-triangle',
+            accept: () => {
         this.addedCards.splice(index, 1);
     }
+    });
 }
 
-
+}
