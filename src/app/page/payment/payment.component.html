@@ -65,7 +65,7 @@
                                     <div class='cd-validate'>
                                         <div class='cvc'>
                                             <label for='cvc-input'>CVC</label>
-                                            <input [(ngModel)]="card.cvv" type='text' id='cvc-input' maxlength="3" name="cvv">
+                                            <input [(ngModel)]="card.cvv" type='text' id='cvc-input' maxlength="4" name="cvv">
                                         </div>
                                         <div class='expiration'>
                                             <div class='field'>
@@ -101,27 +101,38 @@
 
                     <!-- ส่วนแสดงหลังกดเพิ่มบัตร -->
                     <div *ngFor="let card of addedCards; let i = index" class="card-details-section">
-                        
-
-                        <!-- Card Details -->
-                        <div class="card-details">
-                            <div class="cd-number">
-                                <p>
-                                    {{ getMaskedCardNumber(card.cardNumber) }}
-                                </p>
+                                                
+                        <div class='center2'>
+                            <div class='card'>
+                                <div class='front'>        
+                                    <div class='middle'>
+                                        <div class='cd-number'>
+                                            <p class="cardnumfont">
+                                                {{ getMaskedCardNumber(card.cardNumber) }}
+                                            </p>
+                                        </div>
+                                    </div>  
+                                   <div class='bottom'>
+                                        <div class='cardholder'>
+                                            <p class='label'>Cardholder</p>
+                                            <p class='holder'>{{ card.cardName }}</p>
+                                        </div>
+                                        <div class='expires'>
+                                            <p class='label'>CVC</p>
+                                            <p class="holder">{{ maskCVV(card.cvv) }}</p>
+                                        </div>
+                                        <div class='expires'>
+                                            <p class='label'>Exp</p>
+                                            <p><span class='month'>{{ card.month }}</span>/<span class='year'>{{ card.year.slice(-2) }}</span></p>
+                                        </div>      
+                                    </div>  
+                                </div>                 
                             </div>
-                            
-                            <div class="cardholder">
-                                <p class="label">Cardholder</p>
-                                <p class="holder">{{ card.cardName }}</p>
-                            </div>
-                            <div class="expires">
-                                <p class="label">Expiry date</p>
-                                <p><span class="month">{{ card.month }}</span>/<span class="year">{{ card.year.slice(-2) }}</span></p>
-                            </div>
-                                           
                         </div>
                         <i class="pi pi-times deletebtn" (click)="removeCard(i)"></i>
+                    </div>
+                    <div class="addbtn" *ngIf="addedCards.length >= 1" (click)="showDialog = true">
+                        <p-button>Add</p-button>
                     </div>
                 </div>
             </div>
