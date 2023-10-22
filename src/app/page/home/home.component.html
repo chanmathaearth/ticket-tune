@@ -3,20 +3,20 @@
     <div class="container m-auto p-7 " style="position: relative; z-index: 1;">
       <span class="p-input-icon-left w-full pb-0">
         <i class="pi pi-search"></i>
-        <input type="text" placeholder="Search..." class="w-full" pInputText />
+        <input type="text" placeholder="Search..." class="w-full" pInputText [(ngModel)]="searchText" (input)="search()" />
       </span>
       <div class="grid-container mt-3">
         <ng-container *ngFor="let item of listConcert">
-          <div class="shadow-2 border-round-sm p-2 cursor-pointer" [routerLink]="['/detail', item.concert_id]">
-            <img [src]="item.img_url" style="width: 100%;">
-            <div class="text-lg font-bold my-2">{{ item.name }}</div>
-            <div>{{ item.details }}</div>
+          <div class="con1 shadow-2 border-round-sm p-2 cursor-pointer mt-6" [routerLink]="['/booking']" style="background-color:rgba(0, 0, 0, 0.555)">
+            <img [src] = "item.img_url" style="width: 100%; " >
+            <div class="text-lg font-bold my-2 text-white text-center">{{ item.name }}</div>
+            <div class="text-white text-center" style="font-family: 'Courier New', monospace;">{{ item.location }}</div>
           </div>
         </ng-container>
       </div>
     </div>
   </div>
 </app-topbar>
-<video autoplay muted loop playsinline preload="auto" style="object-fit: cover; width: 100%; height: 100%; z-index: 0;">
+<video autoplay muted loop playsinline preload="auto" style="object-fit: cover; width: 100%; height: 130vh; z-index: 0;">
   <source src="./assets/bg.mp4" type="video/mp4">
 </video>
