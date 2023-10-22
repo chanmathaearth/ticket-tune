@@ -10,9 +10,9 @@ export class HomeComponent {
   listConcert: any[] = [
     {
       concert_id: 1,
-      name: 'OTHER WORLD',
-      img_url: 'https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/e0d3d4305a0111ee911101117567899b.jpg?opt=mild&resize=w200,h290',
-      location: 'REXKL'
+      name: 'Office Syndrome + YOURHEART + ALISON',
+      img_url: 'https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/cb9c01a06c2611ee911101117567899b.jpg?format=basic&resize=w425,h610',
+      location: 'Blueprint Livehouse'
     },
     {
       concert_id: 2,
@@ -28,9 +28,9 @@ export class HomeComponent {
     },
     {
       concert_id: 4,
-      name: 'Office Syndrome + YOURHEART + ALISON',
-      img_url: 'https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/cb9c01a06c2611ee911101117567899b.jpg?format=basic&resize=w425,h610',
-      location: 'Blueprint Livehouse'
+      name: 'A G THANG',
+      img_url: 'https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/5dba6df0628711ee911101117567899b.jpg?format=basic&resize=w425,h610',
+      location: '25 Degrees Bangkok'
     },
     {
       concert_id: 5,
