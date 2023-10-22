@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { MenuItem } from 'primeng/api';
 
 interface SeatData {
-  [zone: string]: string[]; // An object with keys (zone names) that map to string arrays (seat numbers)
+  [zone: string]: string[];
 }
 
 @Component({
@@ -11,6 +12,13 @@ interface SeatData {
   styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent {
+  currentConcertName: string = 'JAMES ARTHUR SOUTH EAST ASIA TOUR 2023 - BANGKOK';
+  isSelectSeatsCompleted: boolean = false;
+  steps: MenuItem[] = [];
+  activeStepIndex = this.isSelectSeatsCompleted ? 1 : 0;
+  currentStep: string = "Select Seats";
+
+
   selectedZone: string = '';
   selectedSeats: string[] = [];
   zoneSelected: boolean = false;
@@ -21,9 +29,12 @@ export class BookingComponent {
   countdown: number = 60;
   countdownInterval: any;
 
+
+
   constructor(private messageService: MessageService) {
     this.startCountdown();
   }
+  
 
   startCountdown() {
     this.resetCountdown(); // Reset the countdown
@@ -49,7 +60,7 @@ export class BookingComponent {
       const formattedSeconds = seconds.toString().padStart(2, '0'); // leading zero
       const formattedTime = `${formattedMinutes}:${formattedSeconds}`;
       timerElement.textContent = `Time Left : ${formattedTime}`;
-      if (this.countdown <= 50) {
+      if (this.countdown <= 200) {
         timerElement.classList.add('red-timer');
       } else {
         timerElement.classList.remove('red-timer');
@@ -70,7 +81,7 @@ export class BookingComponent {
 
   resetCountdown() {
     clearInterval(this.countdownInterval);
-    this.countdown = 60; // 1 minute
+    this.countdown = 300; // 5 minute
     this.updateCountdownDisplay();
   }
   
@@ -82,11 +93,9 @@ export class BookingComponent {
     this.zoneSelected = true;
     this.displayDialog = true;
     this.availableSeats = this.seatData[zone];
+    this.isSelectSeatsCompleted = true;
+    this.activeStepIndex = 1;
     this.startCountdown();
-  }
-
-  buyTickets() {
-    this.selectedSeats = [];
   }
 
   hideDialog() {
@@ -135,6 +144,169 @@ export class BookingComponent {
     this.seatButtonWidth = width;
   }
 
+  
+  calculateTotal(): string {
+    const ticketPrices: { [zone: string]: number } = {
+      'ZONE A': 4900,
+      'ZONE B': 3900,
+      'ZONE C': 2900,
+      'ZONE D': 1900,
+    };
+  
+    const selectedSeatsByZone: { [zone: string]: string[] } = {};
+  
+    this.selectedSeats.forEach(seat => {
+      const zone = this.getZoneForSeat(seat);
+      if (zone) {
+        if (!selectedSeatsByZone[zone]) {
+          selectedSeatsByZone[zone] = [];
+        }
+        selectedSeatsByZone[zone].push(seat);
+      }
+    });
+  
+    let total = 0;
+    for (const zone in selectedSeatsByZone) {
+      if (selectedSeatsByZone.hasOwnProperty(zone)) {
+        const price = ticketPrices[zone];
+        if (price) {
+          total += price * selectedSeatsByZone[zone].length;
+        }
+      }
+    }
+    const formattedTotal = total.toLocaleString() + ' THB';
+    return formattedTotal;
+  }
+  
+  getZoneForSeat(seat: string): string {
+    for (const zone in this.seatData) {
+      if (this.seatData.hasOwnProperty(zone)) {
+        if (this.seatData[zone].includes(seat)) {
+          return zone;
+        }
+      }
+    }
+    return ''; // Return an empty string or an appropriate value when the seat is not found
+  }
+
+  // Inside BookingComponent class
+displaySummary: boolean = false;
+selectedPaymentMethod: string = '';
+
+
+// ...
+selectedSeatsSummary: { seat: string; zone: string }[] = [];
+
+
+buyTickets() {
+  // Create a summary of the selected seats
+  const seatSummary = this.selectedSeats.map(seat => ({
+    seat,
+    zone: this.getZoneForSeat(seat), // If you have a function to get the zone for a seat
+  }));
+  // Store the previous selections
+  const previousSelectedSeats = [...this.selectedSeats];
+  const previousTotal = this.calculateTotal();
+  const previousQuantity = this.selectedSeats.length;
+
+  // Clear the selections
+  this.selectedSeats = [];
+
+  this.displaySummary = true;
+
+  this.selectedSeats = previousSelectedSeats;
+
+  this.selectedSeatsSummary = seatSummary;
+  if (this.selectedPaymentMethod === 'creditDebit') {
+    // Display the summary dialog
+    this.displaySummary = true;
+  }
+}
+
+
+confirmBooking() {
+  // Handle the "Confirm Booking" button click
+  // Get the selected payment method (either 'creditDebit' or 'promptPay')
+  console.log('confirmBooking function called');
+  console.log('Booking confirmed with', this.selectedPaymentMethod);
+
+  this.displayPaymentConfirmation = true;
+  // Close the summary dialog
+  this.displaySummary = false;
+  this.showPaymentSuccessMessage();
+} 
+confirmPayment() {
+  if (this.selectedPaymentMethod === 'creditDebit') {
+    // Handle credit/debit card payment logic here.
+    // You can simulate a successful payment for demonstration purposes.
+    this.finalizePayment();
+  } else if (this.selectedPaymentMethod === 'promptPay') {
+    // Handle PromptPay payment logic here.
+    // You can simulate a successful payment for demonstration purposes.
+    this.finalizePayment();
+  }
+}
+
+
+
+
+
+displayPaymentConfirmation: boolean = false;
+
+  // Declare the finalizePayment function (you can implement its logic)
+  finalizePayment() {
+    this.displaySummary = false;
+    this.showPaymentSuccessMessage();
+  }
+
+  showPaymentSuccessMessage() {
+    // You can customize this method to display a success message or navigate to a success page.
+    // For now, we'll use the PrimeNG MessageService to show a success message.
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Payment Successful',
+      detail: 'Your payment has been confirmed for ' + this.selectedPaymentMethod + '.',
+    });
+  }
+
+
+  displayQRCode: boolean = false;
+  showQRCodePopup() {
+    if (this.selectedPaymentMethod === 'promptPay') {
+      this.displayQRCode = true; // Show the QR code popup only when 'promptPay' is selected
+    }
+  }
+cardNumber: string = '';
+expiryDate: string = '';
+nameOnCard: string = '';
+cvvCvc: string = '';
+saveCard: boolean = false;
+
+selectCard(selectedCard: any) {
+  // Update the selected card information
+  this.cardNumber = selectedCard.cardNumber;
+  this.nameOnCard = selectedCard.nameOnCard;
+  this.expiryDate = selectedCard.expiryDate;
+  this.cvvCvc = selectedCard.cvvCvc;
+  this.saveCard = selectedCard.saved;
+}
+
+savedCards: any[] = [
+  // Initialize with some example saved card data
+  {
+    cardNumber: '1234 5678 9012 3456',
+    nameOnCard: 'John Doe',
+    expiryDate: '12/24',
+    cvvCvc: '123',
+  },
+  {
+    cardNumber: '9999 9999 9999 9999',
+    nameOnCard: 'Joe Ray',
+    expiryDate: '10/24',
+    cvvCvc: '456',
+  },
+  // Add more saved card objects as needed
+];
 
 
 }

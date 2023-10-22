@@ -90,14 +90,15 @@
           <p class="label">Quantity : {{ selectedSeats.length }}</p>
         </div>
         <div class="selected-seats-box text-white" style="background-color: black;">
-          <p class="label">Selected Seats : {{ selectedSeats.join(', ') }}</p>
+          <p class="label">Total : {{ calculateTotal() }}</p>
         </div>
         <div class="buy-tickets-button-box text-white">
+          <button (click)="buyTickets()">Buy Tickets</button>
         </div>
       </div>
     </div>
     <p-dialog header="Select Seats" [(visible)]="displayDialog" [modal]="true" [resizable]="false" [style]="{ width: '50%' }">
-      <p id="countdown-timer">Time Left : 01:00</p>
+      <p id="countdown-timer">Time Left : 05:00</p>
       <div class="stage-image">
         <img class="popup-image" src="assets/Stage.jpg" alt="Stage Image">
       </div>
@@ -118,5 +119,89 @@
           <button class="reset-button" (click)="resetSelection()">Reset</button>
         </div>
         <p>Selected Seats : {{ selectedSeats.join(', ') }}</p>
-        <button (click)="hideDialog()">Close</button>
+        <button class="custom-close-button" (click)="hideDialog()">Close</button>
       </div>
+    </p-dialog>
+    <p-dialog header="Booking Summary" [(visible)]="displaySummary" [modal]="true" [resizable]="false" [style]="{ width: '50%' }">
+      <div class="step-indicators">
+        <div class="step-indicator">
+          <div class="step-circle step-1">1</div>
+          <div class="step-label">Select Seats</div>
+        </div>
+        <div class="step-indicator">
+          <div class="step-circle step-2">2</div>
+          <div class="step-label">Select Payment Method</div>
+        </div>
+        <div class="step-indicator">
+          <div class="step-circle step-3">3</div>
+          <div class="step-label">Confirmation</div>
+        </div>
+      </div>
+      <p-divider align="center">
+        <div class="inline-flex align-items-center">
+          <i class="pi pi-ticket mr-2" style="color: orange;"></i>
+          <b>Summary</b>
+        </div>
+      </p-divider>
+      <div class="summary-content">
+        <p>Concert : {{ currentConcertName }}</p>
+        <p>Quantity : {{ selectedSeats.length }}</p>
+        <p class="pi pi-money-bill" style="color: green"></p> Total Price : {{ calculateTotal() }}
+        <p-divider></p-divider>
+        <h3>Selected Seats</h3>
+        <ul>
+          <li *ngFor="let seat of selectedSeatsSummary">
+            Seat : {{ seat.seat }}, {{ seat.zone }}
+          </li>
+        </ul>
+        <h3>Select Payment Method</h3>
+        <div class="payment-options">
+          <div class="payment-option">
+            <input type="radio" id="creditDebit" name="paymentMethod" value="creditDebit" [(ngModel)]="selectedPaymentMethod">
+            <label for="creditDebit">Credit/Debit Card</label>
+            <div *ngIf="selectedPaymentMethod === 'creditDebit'" class="card-info-container">
+              <div class="card-info-box">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" [(ngModel)]="cardNumber">
+              </div>
+              <div class="card-info-box">
+                <label for="nameOnCard">Name on Card:</label>
+                <input type="text" id="nameOnCard" [(ngModel)]="nameOnCard">
+              </div>
+              <div class="card-info-box">
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="text" id="expiryDate" [(ngModel)]="expiryDate">
+              </div>
+              <div class="card-info-box">
+                <label for="cvvCvc">CVV/CVC:</label>
+                <input type="text" id="cvvCvc" [(ngModel)]="cvvCvc">
+              </div>
+              <div class="select-card-section" *ngIf="selectedPaymentMethod === 'creditDebit'">
+                <h3>Select a Card</h3>
+                <div class="saved-cards-container">
+                  <div class="saved-card" *ngFor="let card of savedCards">
+                    <button (click)="selectCard(card)" class="select-button">Select</button>
+                    <div class="card-details">
+                      <p><strong>Card Number:</strong> {{ card.cardNumber }}</p>
+                      <p><strong>Name on Card:</strong> {{ card.nameOnCard }}</p>
+                      <p><strong>Expiry Date:</strong> {{ card.expiryDate }}</p>
+                      <p><strong>CVV/CVC:</strong> {{ card.cvvCvc }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="payment-option">
+            <input type="radio" id="promptPay" name="paymentMethod" value="promptPay" [(ngModel)]="selectedPaymentMethod">
+            <label for="promptPay">PromptPay</label>
+            <div *ngIf="selectedPaymentMethod === 'promptPay'" class="qr-code-container">
+              <img src="assets/sample-promptpay-qr-code-blurred.jpg" alt="QR Code PromptPay" [style.max-width.px]="350" [style.max-height.px]="350">
+            </div>
+          </div>
+        </div>
+        <button class="confirm-button" (click)="confirmPayment()">Confirm</button>
+      </div>
+    </p-dialog>
+  </div>
+</app-topbar>

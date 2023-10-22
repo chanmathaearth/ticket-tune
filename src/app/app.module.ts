@@ -20,6 +20,8 @@ import { DialogModule } from 'primeng/dialog';
 import { FieldsetModule } from 'primeng/fieldset';
 import { PromogenComponent } from './page/promogen/promogen.component';
 import { PromooverviewComponent } from './page/promooverview/promooverview.component';
+import { StepsModule } from 'primeng/steps';
+
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { PromooverviewComponent } from './page/promooverview/promooverview.compo
     ButtonModule,
     DialogModule,
     FieldsetModule,
+    StepsModule,
   ],
   providers: [
     MessageService,
